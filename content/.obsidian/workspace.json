@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "342c53a6606c8d00",
+        "id": "668af8187e5dca1b",
         "type": "tabs",
         "children": [
           {
-            "id": "0277545f6059f900",
+            "id": "1bd839ee07cdb53f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Redis.md",
-                "mode": "preview",
+                "file": "计网.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "b5812f8505c682a0",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Redis.md",
+                "file": "计网.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Redis.md",
+                "file": "计网.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Redis.md"
+                "file": "计网.md"
               }
             }
           },
@@ -156,19 +155,19 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "0277545f6059f900",
+  "active": "1bd839ee07cdb53f",
   "lastOpenFiles": [
+    "面试题.md",
+    "计网.md",
+    "Redis.md",
     "MySQL.md",
     "index.md",
     "算法.md",
     "Java.md",
-    "Redis.md",
     "img/redis单线程模型.png",
     "img/完全背包-组合.png",
-    "面试题.md",
     "OS.md",
     "MQ.md",
-    "Linux.md",
-    "计网.md"
+    "Linux.md"
   ]
 }
