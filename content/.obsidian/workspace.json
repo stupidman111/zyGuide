@@ -1,19 +1,19 @@
 {
   "main": {
-    "id": "8a48cac98af9ecba",
+    "id": "b201113ceb4d070f",
     "type": "split",
     "children": [
       {
-        "id": "668af8187e5dca1b",
+        "id": "5f9e453cc9c37e2a",
         "type": "tabs",
         "children": [
           {
-            "id": "1bd839ee07cdb53f",
+            "id": "65ff0c766fa34cf0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "计网.md",
+                "file": "Spring.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "451d368256ec884e",
+    "id": "83c2889a3cd620cb",
     "type": "split",
     "children": [
       {
-        "id": "45975d7b1acde5ac",
+        "id": "039c1cda36318cd7",
         "type": "tabs",
         "children": [
           {
-            "id": "a4066e0634fc9b4a",
+            "id": "f070666fbfadeb61",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +43,7 @@
             }
           },
           {
-            "id": "8526be24eddd9cc6",
+            "id": "a058d2c3f4c4fa89",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +58,7 @@
             }
           },
           {
-            "id": "496359954ca0f3f5",
+            "id": "dc063d565c229e7e",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -72,20 +72,20 @@
     "width": 300
   },
   "right": {
-    "id": "b5812f8505c682a0",
+    "id": "3dcea17e259fe8f5",
     "type": "split",
     "children": [
       {
-        "id": "d9bed5693ee7832a",
+        "id": "1bdd1470ab4ce22d",
         "type": "tabs",
         "children": [
           {
-            "id": "905b22e279b7e309",
+            "id": "fcddbab0800e949d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "计网.md",
+                "file": "Spring.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +97,19 @@
             }
           },
           {
-            "id": "9c03f6a4408782b1",
+            "id": "c61c5e387e8ebf63",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "计网.md",
+                "file": "Spring.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "ad6268c9befab082",
+            "id": "3b9aec225a91153c",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,17 +120,17 @@
             }
           },
           {
-            "id": "2a31a7163c223b8a",
+            "id": "118e2625d9550c7c",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "计网.md"
+                "file": "Spring.md"
               }
             }
           },
           {
-            "id": "1b6ad0bdbeb51b7f",
+            "id": "928d03d1ecef492e",
             "type": "leaf",
             "state": {
               "type": "git-view",
@@ -138,12 +138,11 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -155,19 +154,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "1bd839ee07cdb53f",
+  "active": "65ff0c766fa34cf0",
   "lastOpenFiles": [
-    "面试题.md",
-    "计网.md",
     "Redis.md",
-    "MySQL.md",
-    "index.md",
-    "算法.md",
-    "Java.md",
-    "img/redis单线程模型.png",
-    "img/完全背包-组合.png",
     "OS.md",
-    "MQ.md",
-    "Linux.md"
+    "MySQL.md",
+    "Linux.md",
+    "Java.md",
+    "算法.md",
+    "面试题.md"
   ]
 }
