@@ -67,3 +67,27 @@ const (
 ```
 
 ## iota
+> `iota`在下一行开始增长，而不是立即取的它的引用。
+```go
+package main  
+  
+import "fmt"  
+  
+const (  
+    Apple, Banana = iota + 1, iota + 2  
+    Cherimoya, Durian  
+    Elderberry, Fig  
+)  
+  
+func main() {  
+    fmt.Println(Apple)//1  
+    fmt.Println(Banana)//2  
+    fmt.Println(Cherimoya)//2  
+    fmt.Println(Durian)//3  
+    fmt.Println(Elderberry)//3  
+    fmt.Println(Fig)//4  
+}
+```
+## 函数
+> Go中函数可以返回多个值。
+
