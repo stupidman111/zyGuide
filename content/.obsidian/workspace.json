@@ -11,8 +11,12 @@
             "id": "0277545f6059f900",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Redis.md",
+                "mode": "preview",
+                "source": false
+              }
             }
           }
         ]
@@ -82,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Redis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Redis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Redis.md"
+              }
             }
           },
           {
@@ -131,11 +139,12 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -149,11 +158,15 @@
   },
   "active": "0277545f6059f900",
   "lastOpenFiles": [
-    "Redis.md",
+    "MySQL.md",
+    "index.md",
     "算法.md",
+    "Java.md",
+    "Redis.md",
+    "img/redis单线程模型.png",
+    "img/完全背包-组合.png",
     "面试题.md",
     "OS.md",
-    "MySQL.md",
     "MQ.md",
     "Linux.md",
     "计网.md"
