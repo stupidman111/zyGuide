@@ -89,5 +89,52 @@ func main() {
 }
 ```
 ## 函数
+> 同一个包中`init`按照 `导入包的init -> 本包的init执行（若有多个则按顺序）`
 > Go中函数可以返回多个值。
 
+![](./img/Go-执行顺序.png)
+
+```go
+package main  
+  
+import "fmt"  
+
+/* 返回两个值 */
+func getSumAndSub(x, y int) (int, int) {  
+    return x + y, x - y  
+}  
+  
+func main() {  
+    a, b := 1, 2  
+    fmt.Println(getSumAndSub(a, b))  
+}
+```
+
+## 值传递与引用（指针）传递
+> Go函数参数支持 值传递 和 引用传递（指针传递）。
+
+```go
+package main  
+  
+import "fmt"  
+  
+func swapA(x, y int) {  
+    x, y = y, x  
+}  
+  
+func swapB(x, y *int) {  
+    *x, *y = *y, *x  
+}  
+  
+func main() {  
+    a, b := 1, 2  
+  
+    swapA(a, b)       //值传递  
+    fmt.Println(a, b) //1, 2  
+  
+    swapB(&a, &b)     //引用（指针传递）  
+    fmt.Println(a, b) //2, 1  
+}
+```
+
+## defer
