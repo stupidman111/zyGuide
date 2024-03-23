@@ -1,5 +1,5 @@
 # Spring框架及其子模块
-> Spring中各个模块的依赖关系如下，注意：**当我们导入任意一个模块时，他所依赖的模块都会被导入**，比如我们只导入`spring
+> Spring中各个模块的依赖关系如下，注意：**当我们导入任意一个模块时，他所依赖的模块都会被导入**，比如我们只导入`spring-context`，那么它所依赖的`spring-core、spring-context、spring-beans、spring-expression`都会被导入。
 
 ![](./img/Spring中各模块之间的依赖关系.png)
 
@@ -42,7 +42,7 @@
 * **IoC与DI**：DI全名为**依赖注入**，IoC是一种设计思想，DI是IoC的实现方式。
 
 ### IoC示例
-#### 基于XML文件方式
+#### 基于XML文件方式配置Bean对象
 * 引入jar包：
 ```xml
 <!-- 依赖于spring-core、spring-aop、spring-beans、spring-expression，这些都会被导入 -->
@@ -58,7 +58,63 @@
     <version>1.18.22</version>  
 </dependency>
 ```
-
+* 新建一个自定义类，待会交给Spring管理（注入到IoC容器当中）
+```java
+@Data  
+public class DataConfig {  
+    private String url;  
+    private String username;  
+    private String driverName;  
+    private String passwd;  
+}
+```
+* 在`resources`下新建`spring.xml`配置类
+```xml
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">  
+  
+    <bean class="cn.zyy.ioc.DataConfig" id="config">  
+        <property name="username" value="root"/>  
+    </bean>  
+</beans>
+```
+* 通过`ClassPathXmlApplicationContext`类获取bean对象
+```java
+public class Main {  
+  
+    public static void main(String[] args) {  
+       ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");  
+       DataConfig bean = (DataConfig) ctx.getBean("config");  
+  
+       System.out.println(bean.getUsername());  
+  
+    }}
+```
+* 或者直接在代码中通过`@Autowired`注解注入
+#### 基于注解方式配置Bean对象
+* 使用`@Component、@Repository、@Service、@Controller`在类上标注，使之成为Bean对象；
+```java
+@Component
+public class DataConfig {
+	//....
+}
+```
+* 使用`@Configuration`注解定义一个配置类，在配置类中创建方法，方法的返回值是我们要注入IoC容器的类的对象，可以在方法内对该对象进行配置，在方法上使用`@Bean`注解；
+```java
+@Configuration
+public class XxxConfig {
+	
+	@Bean
+	public XxxObj xxxObj(...) {
+		//创建XxxObj对象
+		//设置属性
+		
+		return ...;//返回创建的对象
+	}
+}
+```
 ## AOP
 > AOP（Aspect Oriented Programming）即面向切面编程，AOP 是 OOP（面向对象编程）的一种延续，二者互补，并不对立。
 
