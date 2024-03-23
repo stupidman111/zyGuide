@@ -86,6 +86,31 @@ public class ArrayList<E> extends AbstractList<E>
 * ArrayList中的add方法用到了System.arraycopy()：当在指定位置添加元素时，需要将原有的一部分数据向后拷贝一位；
 * ArrayList中的toArray()方法用到了Arrays.copyOf()：从原来的底层数组中，复制出一个新的数组并返回；
 
+## LinkedList
+```java
+public class LinkedList<E> extends AbstractSequentialList<E>
+		implements List<E>, Deque<E>, Cloneable, java.io.Serializable
+{
+	//...
+}
+```
+* 是否线程安全：否
+* 插入和删除操作：底层使用双向链表结构（非循环）
+	* 头部插入、删除：O(1)；
+	* 尾部插入、删除：O(1)；
+	* 指定位置插入、删除：O(n)；
+* 快速访问：LinkedList底层是链表，地址不连续，不支持快速访问，因此不能实现`RandomAccess`接口；
+* 内存空间占用：链表的每个节点都拥有两个指针
+## 删除节点
+> 删除节点的核心方法是`unlink(Node<E> x)`方法
+* 首先获取待删除节点x的前驱pre和后继节点next；
+* 判断待删除节点x是否为头结点或尾节点：
+	* 若x是头节点，则将虚拟头结点的后继指针指向x的后继节点；
+	* 若x是尾节点，则将虚拟尾节点的前驱指针指向x的前驱节点；
+	* 若x不是头节点，也不是尾节点，执行下一步操作；
+		* 将待删除节点x的前驱节点的后继指针指向x的后继节点pre，将x的前驱指针置为null；
+		* 将待删除节点x的后继节点的前驱指针指向x的前驱节点next，将x的后继指针置为null；
+* 将待删除节点x置为nul，修改链表长度；
 # Java IO
 
 # Java反射、动态代理
