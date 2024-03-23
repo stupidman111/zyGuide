@@ -101,7 +101,7 @@ public class LinkedList<E> extends AbstractSequentialList<E>
 	* 指定位置插入、删除：O(n)；
 * 快速访问：LinkedList底层是链表，地址不连续，不支持快速访问，因此不能实现`RandomAccess`接口；
 * 内存空间占用：链表的每个节点都拥有两个指针
-## 删除节点
+### 删除节点
 > 删除节点的核心方法是`unlink(Node<E> x)`方法
 * 首先获取待删除节点x的前驱pre和后继节点next；
 * 判断待删除节点x是否为头结点或尾节点：
