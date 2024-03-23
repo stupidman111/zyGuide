@@ -49,7 +49,20 @@ public void testTransaction() {
 
 ```
 
+## Spring事务属性
+### 事务传播行为
+* `TransactionDefinition.PROPAGATION_REQUIRED`：
+	* 如果外部方法没有开启事务，那么`PROPAGATION_REQUIRED`修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰；
+	* 如果外部方法开启了事务，且传播行为是`PROPAGATION_REQUIRED`的话，所有`PROPAGATION_REQUIRED`修饰的内部方法和外部方法均属于同一个事务，只要一个方法中发生了回滚，整个事务都会回滚。
+* `TransactionDefinition.PROPAGATION_REQUIRES_NEW`：
+	* 创建一个新的事务，如果当前存在事务，则把当前事务挂起。即不管外部方法是否开启事务，`PROPAGATION_REQUIRES_NEW`修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。
+* `TransactionDefinition.PROPAGATION_NESTED`：
+	* 
+* `TransactionDefinition.PROPAGATION_MANDATORY`
 
+### 事务隔离级别
+
+	
 
 
 
