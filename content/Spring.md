@@ -1,5 +1,5 @@
 # Spring框架及其子模块
-> Spring中各个模块的依赖关系如下，注意：当我们导入任意一个中间模块，他所依赖的
+> Spring中各个模块的依赖关系如下，注意：**当我们导入任意一个模块时，他所依赖的模块都会被导入**，比如我们只导入`spring
 
 ![](./img/Spring中各模块之间的依赖关系.png)
 
@@ -45,8 +45,18 @@
 #### 基于XML文件方式
 * 引入jar包：
 ```xml
-
-
+<!-- 依赖于spring-core、spring-aop、spring-beans、spring-expression，这些都会被导入 -->
+<dependency>  
+    <groupId>org.springframework</groupId>  
+    <artifactId>spring-context</artifactId>  
+    <version>5.3.15</version>  
+</dependency>  
+  
+<dependency>  
+    <groupId>org.projectlombok</groupId>  
+    <artifactId>lombok</artifactId>  
+    <version>1.18.22</version>  
+</dependency>
 ```
 
 ## AOP
