@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java.md",
+                "file": "Spring.md",
                 "mode": "source",
                 "source": false
               }
@@ -82,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -98,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Java.md",
+                "file": "Spring.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Java.md",
+                "file": "Spring.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Java.md"
+                "file": "Spring.md"
               }
             }
           },
@@ -151,11 +152,12 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -169,6 +171,7 @@
   },
   "active": "5f03af72485b71e8",
   "lastOpenFiles": [
+    "Java.md",
     "Go.md",
     "img/Go-执行顺序.png",
     "Spring.md",
@@ -176,7 +179,6 @@
     "OS.md",
     "MySQL.md",
     "Linux.md",
-    "Java.md",
     "算法.md",
     "面试题.md"
   ]
