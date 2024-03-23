@@ -22,6 +22,34 @@
 * 织入：
 
 # Spring事务
-> 
+> 程序是否支持事务首先取决于数据库，比如MySQL若使用的是InnoDB引擎，就支持事务，而MyISAM引擎就不支持事务。(MySQL的InnoDB通过`undolog`回滚日志实现回滚)
+
+## 四大特性
+* 原子性：
+* 一致性：
+* 隔离性：
+* 持久性
+
+## Spring支持两种方式的事务管理
+### 编程式事务管理
+> 通过`TransactionTemplate`或者`TransactionManager`手动管理事务，实际应用中很少使用。
+
+```java
+
+@Autowired
+private TransactionTemplate transactionTemplate;
+
+public void testTransaction() {
+	
+}
+```
+### 声明式事务管理
+> 通过AOP实现，基于`@Transactional`的全注解方式使用最多。
+```java
+
+```
+
+
+
 
 
