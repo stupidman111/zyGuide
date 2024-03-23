@@ -83,6 +83,8 @@ public class ArrayList<E> extends AbstractList<E>
 * 当加入第1个元素后，底层数组容量变为10；
 * 当加入第11个元素后，底层数组触发`grow`扩容，扩容到原来的`1.5`倍；
 ### System.arraycopy() 和 Arrays.copyOf()
+* ArrayList中的add方法用到了System.arraycopy()：当在指定位置添加元素时，需要将原有的一部分数据向后拷贝一位；
+* ArrayList中的toArray()方法用到了Arrays.copyOf()：从原来的底层数组中，复制出一个新的数组并返回；
 
 # Java IO
 
