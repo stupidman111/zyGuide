@@ -140,4 +140,7 @@ public @interface Transactional {
 ### 原理
 
 
+### Spring AOP 自调用问题
+
+
 ### 注意事项
