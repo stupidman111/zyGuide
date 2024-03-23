@@ -51,6 +51,11 @@ class Main {
 
 
 # Java集合
+![](./img/Java容器继承图.png)
+
+## Collection接口
+> 三大子接口：Set、List、Queue
+
 
 ## Map接口
 
@@ -58,7 +63,26 @@ class Main {
 
 
 ## ArrayList
-
+```java
+public class ArrayList<E> extends AbstractList<E>  
+        implements List<E>, RandomAccess, Cloneable, java.io.Serializable  
+{
+	//...
+}
+```
+* 是否线程安全：否，方法都没有使用`synchronized`关键字；
+* 底层数据结构：底层是Object数组，支持动态扩容；
+* 插入和删除是操作：
+	* 直接插入：默认插入到数组尾部，时间复杂度为O(1)；
+	* 指定位置插入：需要移动大量元素，时间复杂度为O(n)；
+	* 指定元素移除/指定位置移除：时间复杂度O(n)；
+* 快速访问：实现了`RandomAccess`接口，支持快速访问，通过索引直接访问底层数组；
+* 内存空间占用：数组尾部会预留一定空间；
+### 扩容机制
+* 未指定容量初始化的空list，底层数组容量为0；
+* 当加入第1个元素后，底层数组容量变为10；
+* 当加入第11个元素后，底层数组触发`grow`扩容，扩容到原来的`1.5`倍；
+### System.arraycopy() 和 Arrays.copyOf()
 
 # Java IO
 
