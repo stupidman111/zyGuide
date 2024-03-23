@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Go.md",
+                "file": "Redis.md",
                 "mode": "source",
                 "source": false
               }
@@ -111,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go.md",
+                "file": "Redis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go.md",
+                "file": "Redis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go.md"
+                "file": "Redis.md"
               }
             }
           },
@@ -168,8 +168,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -181,13 +180,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "99a7c4f5e821411f",
+  "active": "f070666fbfadeb61",
   "lastOpenFiles": [
+    "Go.md",
     "Spring.md",
     "img/Spring中各模块之间的依赖关系.png",
     "MySQL.md",
     "Java.md",
-    "Go.md",
     "img/Go-执行顺序.png",
     "Redis.md",
     "OS.md",
