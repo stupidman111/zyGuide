@@ -57,12 +57,87 @@ public void testTransaction() {
 * `TransactionDefinition.PROPAGATION_REQUIRES_NEW`：
 	* 创建一个新的事务，如果当前存在事务，则把当前事务挂起。即不管外部方法是否开启事务，`PROPAGATION_REQUIRES_NEW`修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。
 * `TransactionDefinition.PROPAGATION_NESTED`：
-	* 
-* `TransactionDefinition.PROPAGATION_MANDATORY`
+	* 在外部方法开启事务的情况下，在内部开启一个新的事物，作为嵌套事务存在；
+	* 如果外部方法无事务，则单独开启一个事务，与`PROPAGATION_REQUIRED`类似；
+* `TransactionDefinition.PROPAGATION_MANDATORY`：
+	* 如果当前存在事务，则加入该事务；
+	* 如果当前无事务，则抛出异常；
 
 ### 事务隔离级别
+* `TransactionDefinition.ISOLATION_DEFAULT`：
+	* 使用后端数据库默认的隔离级别，MySQL InnoDB引擎默认使用`REPEATABLE_READ-可重复度`隔离级别，Oracle默认采用`READ_COMMITTED-读已提交`隔离级别；
+* `TransactionDefinition.ISOLATION_READ_UNCOMMITTED`：
+	* 读已提交隔离级别，只允许读取并发事务`已经提交了`的数据，可解决脏读，但无法解决不可重复读、幻读；
+* `TransactionDefinition.ISOLATION_REPEATABLE_READ`：
+	* 可重复读隔离级别，保证事务中多次查询同一个数据返回的结果是一致的，除非是当前事务自身对数据做了修改，可以解决脏读、不可重复读，但不能完全解决幻读；
+* `TransactionDefinition.ISOLATION_SERIALIZABLE`：
+	* 串行化隔离级别，不允许并发事务，所有事务的执行必须串行执行，可解决脏读、不可重复读、幻读，但执行效率很低。
 
-	
+### 事务超时属性
+> 所谓事务超时，就是指一个事务所允许执行的最长时间，如果超过该时间限制但事务还没有完成，则自动回滚事务。在 `TransactionDefinition` 中以 int 的值来表示超时时间，其单位是秒，默认值为-1，这表示事务的超时时间取决于底层事务系统或者没有超时时间。
+
+### 事务只读属性
+> 对于只有查询操作的事务，可以指定事务的类型为`readOnly-只读事务`，只读事务不涉及数据的修改。
+> MySQL默认对每一个新建立的连接都启用了`autocommit`模式，在该模式下，每一个发送到MySQL的SQL语句（单独的、未开启事务的），都会默然在一个单独的事务中进行处理，执行结束后会自定提交事务。
+
+* 如果一次执行单条语句的查询，则没必要开启事务，因为MySQL默认支持单条SQL执行期间的读一致性（加读锁）。
+* 如果一次执行多条查询语句，则应当开启事务，以保证多条SQL的一致性。
+
+### 事务回滚规则
+> 这些规则定义了哪些异常会导致事务回滚而哪些不会。默认情况下，事务只有遇到运行期异常（`RuntimeException` 的子类）时才会回滚，`Error` 也会导致事务回滚，但是，在遇到检查型（Checked）异常时不会回滚。
+
+* 也可以回滚自定义异常：
+```java
+  @Transactional(rollbackFor = MyException.class)
+```
+
+## @Transactional注解
+### 作用范围
+* 方法：推荐将事务注解在方法上使用，注意只能应用到`public`权限的方法上，否则不生效。
+* 类：如果在类上使用事务注解，那么该类下的所有`public`方法都生效；
+* 接口：不推荐在接口上使用；
+### 常用配置参数
+```java
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Inherited
+@Documented
+public @interface Transactional {
+
+  @AliasFor("transactionManager")
+  String value() default "";
+
+  @AliasFor("value")
+  String transactionManager() default "";
+
+  Propagation propagation() default Propagation.REQUIRED;
+
+  Isolation isolation() default Isolation.DEFAULT;
+
+  int timeout() default TransactionDefinition.TIMEOUT_DEFAULT;
+
+  boolean readOnly() default false;
+
+  Class<? extends Throwable>[] rollbackFor() default {};
+
+  String[] rollbackForClassName() default {};
+
+  Class<? extends Throwable>[] noRollbackFor() default {};
+
+  String[] noRollbackForClassName() default {};
+
+}
+```
+
+| 属性名         | 说明                      |
+| ----------- | ----------------------- |
+| propagation | 事务的传播方式                 |
+| isolation   | 事务的隔离级别                 |
+| timeout     | 事务的超时时长，默认为-1，表示不设置超时时长 |
+| readOnly    | 是否是只读事务，默认为否            |
+| rollbackFor | 哪些情况下会回滚                |
+
+### 原理
 
 
-
+### 注意事项

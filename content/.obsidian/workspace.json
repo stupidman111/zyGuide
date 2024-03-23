@@ -25,14 +25,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Spring.md",
-                "mode": "source",
+                "file": "MySQL.md",
+                "mode": "preview",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -169,15 +168,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "5f03af72485b71e8",
+  "active": "65ff0c766fa34cf0",
   "lastOpenFiles": [
+    "MySQL.md",
+    "Spring.md",
     "Java.md",
     "Go.md",
     "img/Go-执行顺序.png",
-    "Spring.md",
     "Redis.md",
     "OS.md",
-    "MySQL.md",
     "Linux.md",
     "算法.md",
     "面试题.md"
