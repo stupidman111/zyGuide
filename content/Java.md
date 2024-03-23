@@ -52,6 +52,13 @@ class Main {
 
 # Java集合
 
+## Map接口
+
+* `Collection<V> values();`：返回map的所有value的集合，可以作为ArrayList的构造参数。
+
+
+## ArrayList
+
 
 # Java IO
 
