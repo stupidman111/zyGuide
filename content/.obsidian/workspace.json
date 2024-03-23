@@ -20,6 +20,18 @@
             }
           },
           {
+            "id": "99a7c4f5e821411f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Go.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "5f03af72485b71e8",
             "type": "leaf",
             "state": {
@@ -31,7 +43,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -98,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Spring.md",
+                "file": "Go.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Spring.md",
+                "file": "Go.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Spring.md"
+                "file": "Go.md"
               }
             }
           },
@@ -155,7 +168,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -167,11 +181,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "65ff0c766fa34cf0",
+  "active": "99a7c4f5e821411f",
   "lastOpenFiles": [
+    "Spring.md",
     "img/Spring中各模块之间的依赖关系.png",
     "MySQL.md",
-    "Spring.md",
     "Java.md",
     "Go.md",
     "img/Go-执行顺序.png",

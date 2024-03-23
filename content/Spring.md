@@ -128,7 +128,13 @@ public class XxxConfig {
 * 切点：
 * 织入：
 ### Spring AOP 的自调用问题
-
+* 首先，*如果目标方法是被同一个实例中的其他方法调用的，则AOP切面可能会失效*。这是因为Spring AOP是通过代理机制实现的，而代理只会拦截外部调用，而不会拦截同一个实例中的方法调用。为了解决这个问题，可以将目标方法抽离成一个单独的类，并通过Spring的依赖注入机制将其注入到目标类中。
+	* ps：也可以在主调方法内获取当前类的代理对象，然后通过代理对象调用被调方法：
+		* 导入`aspectJ`依赖；
+		* 使用`AopContext.currentProxy()`获取当前代理对象；
+		* 开启`@EnableAspectJAutoProxy(exposeProxy = true)`注解；
+* 其次，*如果目标方法是私有方法，则AOP切面同样会失效*。这是因为AOP切面是通过动态代理实现的，而Java语言中私有方法无法被子类覆盖，因此AOP代理无法代理私有方法。解决这个问题的方法是将目标方法改为public或protected方法。
+* 最后，如果目标方法在同一个类中被递归调用，则AOP切面可能会导致无限递归。为了避免这个问题，可以将AOP切面的作用范围限定在目标方法外部，或者使用@Aspect注解的@Around通知来控制目标方法的执行。
 
 # Spring事务
 > 程序是否支持事务首先取决于数据库，比如MySQL若使用的是InnoDB引擎，就支持事务，而MyISAM引擎就不支持事务。(MySQL的InnoDB通过`undolog`回滚日志实现回滚)
@@ -250,6 +256,11 @@ public @interface Transactional {
 
 
 ### Spring AOP 自调用问题
-
-
+>当一个方法被标记了`@Transactional` 注解的时候，Spring 事务管理器只会在被其他类方法调用的时候生效，而不会在一个类中方法调用生效。
+[[Spring#Spring AOP 的自调用问题]]
 ### 注意事项
+- `@Transactional` 注解只有作用到 public 方法上事务才生效，不推荐在接口上使用；
+- 避免同一个类中调用 `@Transactional` 注解的方法，这样会导致事务失效；
+- 正确的设置 `@Transactional` 的 `rollbackFor` 和 `propagation` 属性，否则事务可能会回滚失败;
+- 被 `@Transactional` 注解的方法所在的类必须被 Spring 管理，否则不生效；
+- 底层使用的数据库必须支持事务机制，否则不生效；
