@@ -20,6 +20,8 @@
 * 通知：
 * 切点：
 * 织入：
+### Spring AOP 的自调用问题
+
 
 # Spring事务
 > 程序是否支持事务首先取决于数据库，比如MySQL若使用的是InnoDB引擎，就支持事务，而MyISAM引擎就不支持事务。(MySQL的InnoDB通过`undolog`回滚日志实现回滚)
