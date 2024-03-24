@@ -52,6 +52,8 @@ class Main {
 
 # Java集合
 ![](./img/Java容器继承图.png)
+可省略为：
+![](./img/Java主要集合框架.png)
 
 ## Collection接口
 > 三大子接口：Set、List、Queue
@@ -111,6 +113,26 @@ public class LinkedList<E> extends AbstractSequentialList<E>
 		* 将待删除节点x的前驱节点的后继指针指向x的后继节点pre，将x的前驱指针置为null；
 		* 将待删除节点x的后继节点的前驱指针指向x的前驱节点next，将x的后继指针置为null；
 * 将待删除节点x置为nul，修改链表长度；
+
+## HashMap
+> 主要用于存放键值对，实现了Map接口，非线程安全。
+```java
+public class HashMap<K,V> extends AbstractMap<K,V>
+		implements Map<K,V>, Cloneable, Serializable 
+{
+	//...
+}
+```
+
+* 设计组成：JDK1.8之前，HashMap底层是 `数组 + 链表`实现；JDK1.8之后，HashMap底层是`数组 + 链表/红黑树`实现（在链表长度达到某个阈值时，转化为红黑树；在红黑树节点数小于某个阈值时，退化为链表）
+* 重要属性：
+	* `loadFactory--负载因子`
+	* `threshold--阈值`
+	* `Node节点`
+	* `TreeNode节点`
+### 链表与红黑树的转换
+
+
 # Java IO
 
 # Java反射、动态代理

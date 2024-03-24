@@ -118,7 +118,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -205,6 +206,7 @@
   },
   "active": "7fa896db8ee05638",
   "lastOpenFiles": [
+    "img/Java主要集合框架.png",
     "Spring.md",
     "Java.md",
     "Kafka.md",
