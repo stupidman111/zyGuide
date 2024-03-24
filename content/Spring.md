@@ -32,7 +32,7 @@
 
 
 # IoC & AOP
-> IoC--控制反转，AOP--面向切面编程
+> IoC--`Inversion of Control`--控制反转，AOP--面向切面编程
 ## IoC
 > - **使用 IoC 思想的开发方式** ：不通过 new 关键字来创建对象，而是通过 IoC 容器(Spring 框架) 来帮助我们实例化对象。我们需要哪个对象，直接从 IoC 容器里面去取即可。
 
