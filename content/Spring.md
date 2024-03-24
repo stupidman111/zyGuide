@@ -93,6 +93,11 @@
 * ClassPathXmlApplicationContext、FileSystemXmlApplicationContext实现了ApplicationContext接口；
 > Spring在启动容器的时候，就已经创建好了所有的`Singleton`的Bean对象。
 
+### BeanFactory 与 ApplicationContext
+> BeanFactory是Spring的心脏，ApplicationContext是Spring的身体。
+
+
+
 ### IoC示例
 #### 基于XML文件方式配置Bean对象
 * 引入jar包：
