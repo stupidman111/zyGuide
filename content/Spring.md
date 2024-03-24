@@ -211,13 +211,50 @@ public class XxxConfig {
 	* 将Bean定义为多例，每个线程请求都获取一个独立的Bean；
 	* 将Bean的成员变量保存在ThreadLocal中；
 
+### 循环依赖问题
+```java
+class A { private B b; public void setB(B b) {this.b = b;} } class B { private A a; public void setA(A a) {this.a = a;} }
+```
+> 上面这种情况称之为A、B循环依赖问题，但是这种循环依赖是可以解决的。
+* 思想：先实例化，后设置属性
+```java
+A a = new A(); 
+B b = new B(); 
+// 依赖注入 
+a.setB(b); 
+b.setA(a);
+```
+实际上就如下图这样：
+![](./img/getter:setter循环依赖解决.png)
+> 循环依赖的对象，如果无法做到先实例化，后设置依赖（属性），那么这种循环对象是无法解决的；
+
+```java
+class A {
+	private B b; 
+	public A(B b) { this.b = b; } 
+} 
+
+class B { 
+	private A a; 
+	public B(A a) { this.a = a; } 
+}
+```
+> 循环依赖的两个对象，只能通过构造方法创建对方，且构造方法还需要对方的实例。
+
 ### Bean的循环依赖问题
 > A依赖B且B依赖A，或者C依赖C，就构成了循环依赖
 
 * Prototype作用域的Bean，Spring启动时会直接报错；
 * Singleton作用域的Bean，Spring会根据注入方式解决一部分；
 ### Spring可解决的Bean循环依赖类型
+> Spring中存在的三种依赖注入方式：
+* 基于 构造方法 的依赖注入；
+* 基于 setter() 方法的依赖注入；
+* 基于 成员变量 的依赖注入；
 
+> Spring只能解决Singleton作用域的Bean的循环依赖（解决一部分）
+
+https://juejin.cn/post/7002874888448917534
 
 ## AOP
 > AOP（Aspect Oriented Programming）即面向切面编程，AOP 是 OOP（面向对象编程）的一种延续，二者互补，并不对立。
