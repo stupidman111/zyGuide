@@ -41,6 +41,7 @@
 # Spring常用注解
 > Spring 有很多模块，甚至广义的 SpringBoot、SpringCloud 也算是 Spring 的一部分，我们来分模块，按功能来看一下一些常用的注解：
 
+
 ## Web
 * @Controller：组合了@Component注解，应用在MVC控制层；
 * @RestController：@ResponseBody + @Controller，表示该类是一个MVC的handler，且所有方法都默认将数据放在响应体中返回，且告知前端控制器`DispatchServlet`不需要在去请求试图解析器。
@@ -84,6 +85,13 @@
 * **反转**：控制权交给外部环境（IoC容器）；
 * **好处**：对象之间耦合度降低，资源管理简单；
 * **IoC与DI**：DI全名为**依赖注入**，IoC是一种设计思想，DI是IoC的实现方式。
+
+### Spring IoC Container
+> 容器是IoC最重要的部分
+* BeanFactory是容器的接口；
+* ApplicationContext继承了BeanFactory继承，并加以补充；
+* ClassPathXmlApplicationContext、FileSystemXmlApplicationContext实现了ApplicationContext接口；
+> Spring在启动容器的时候，就已经创建好了所有的`Singleton`的Bean对象。
 
 ### IoC示例
 #### 基于XML文件方式配置Bean对象
