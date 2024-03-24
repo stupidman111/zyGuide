@@ -126,8 +126,10 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
 * 设计组成：JDK1.8之前，HashMap底层是 `数组 + 链表`实现；JDK1.8之后，HashMap底层是`数组 + 链表/红黑树`实现（在链表长度达到某个阈值时，转化为红黑树；在红黑树节点数小于某个阈值时，退化为链表）
 * 重要属性：
-	* `loadFactory--负载因子`
-	* `threshold--阈值`
+	* `loadFactor--负载因子`：
+		* 
+	* `threshold--阈值`：
+		* `threshold = capacity * loadFactor`，当`size > threshol`时，就需要考虑对数组进行扩容，会设计到rehash。
 	* `Node节点`
 	* `TreeNode节点`
 ### 链表与红黑树的转换
