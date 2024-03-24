@@ -96,6 +96,20 @@
 ### BeanFactory 与 ApplicationContext
 > BeanFactory是Spring的心脏，ApplicationContext是Spring的身体。
 
+### Spring容器启动阶段
+> Spring 的 IoC 容器工作的过程，其实可以划分为两个阶段：**容器启动阶段**和**Bean 实例化阶段**。
+
+* 容器启动阶段：
+	* 加载配置
+	* 分析配置信息
+	* 装配到BeanDefinition
+	* 其他处理
+* Bean实例化阶段：
+	* 实例化对象；
+	* 装配依赖；
+	* 生命周期回调；
+	* 对象其他处理；
+	* 注册回调接口；
 
 
 ### IoC示例
