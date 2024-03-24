@@ -62,7 +62,7 @@
 * @Configuration：标注该类为配置类，可被Spring扫描到；相当于xml配置文件；
 * @Value：可以提取配置文件中的值赋值给变量；
 * @Bean：
-* @Scope：以什么方式去创建bean，eg：Singleton、Prototype、Request、Session、GlobalSession
+* @Scope：以什么方式去创建bean（bean的作用域）；eg：Singleton、Prototype、Request、Session、GlobalSession
 
 ## AOP
 * @Aspect：什么一个类为切面类，在该类中可以定义通知方法；
@@ -95,7 +95,13 @@
 
 ### BeanFactory 与 ApplicationContext
 > BeanFactory是Spring的心脏，ApplicationContext是Spring的身体。
+* BeanFactory采用的是延迟初始化（懒加载）的方式，只有第一次`getBean()`获取Bean的时候，才会实例化Bean；
+* ApplicationContext是在启动时就预先创建并初始化所有的Bean。
+### BeanDefinition 与 Bean
+> BeanDefiniition是Spring容器创建、保存Bean的信息提供。
 
+* BeanDefinition是Spring中用来描述bean的顶级接口，里面存放Bean的元数据，如Bean的类型、构造函数参数列表、所依赖的Bean、是否是单例Bean、是否懒加载等信息。
+* Bean是我们需要的对象，从Spring容器中获得的对象实例就是Bean。
 ### Spring容器启动阶段
 > Spring 的 IoC 容器工作的过程，其实可以划分为两个阶段：**容器启动阶段**和**Bean 实例化阶段**。
 
@@ -110,6 +116,24 @@
 	* 生命周期回调；
 	* 对象其他处理；
 	* 注册回调接口；
+
+### Bean的生命周期
+> 实例化--> 属性赋值 -->初始化 -->使用 -->销毁
+
+* 实例化：
+
+### Bean的作用域
+> singleton、prototype、request、session、global-session
+
+### Spring中的单例Bean的线程安全问题
+> 单例Bean存在线程安全问题，也就是多个线程同时对Bean的操作可能会造成意料之外的结果；
+> 但大多数线程操作都是对Bean进行查询操作，即使用Bean中的方法等，一般不会修改；
+> 大多数Bean都是无状态的，只关注与方法本身；
+
+* 解决单例Bean线程安全问题：
+	* 将Bean定义为多例，每个线程请求都获取一个独立的Bean；
+	* 将Bean的成员变量保存在ThreadLocal中；
+
 
 
 ### IoC示例
