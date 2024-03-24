@@ -76,7 +76,7 @@
 
 # Spring中用到的设计模式
 
-# IoC & AOP
+# IoC & AOP & Bean
 > IoC--`Inversion of Control`--控制反转，AOP--面向切面编程
 ## IoC
 > - **使用 IoC 思想的开发方式** ：不通过 new 关键字来创建对象，而是通过 IoC 容器(Spring 框架) 来帮助我们实例化对象。我们需要哪个对象，直接从 IoC 容器里面去取即可。
@@ -97,11 +97,7 @@
 > BeanFactory是Spring的心脏，ApplicationContext是Spring的身体。
 * BeanFactory采用的是延迟初始化（懒加载）的方式，只有第一次`getBean()`获取Bean的时候，才会实例化Bean；
 * ApplicationContext是在启动时就预先创建并初始化所有的Bean。
-### BeanDefinition 与 Bean
-> BeanDefiniition是Spring容器创建、保存Bean的信息提供。
 
-* BeanDefinition是Spring中用来描述bean的顶级接口，里面存放Bean的元数据，如Bean的类型、构造函数参数列表、所依赖的Bean、是否是单例Bean、是否懒加载等信息。
-* Bean是我们需要的对象，从Spring容器中获得的对象实例就是Bean。
 ### Spring容器启动阶段
 > Spring 的 IoC 容器工作的过程，其实可以划分为两个阶段：**容器启动阶段**和**Bean 实例化阶段**。
 
@@ -116,26 +112,6 @@
 	* 生命周期回调；
 	* 对象其他处理；
 	* 注册回调接口；
-
-### Bean的生命周期
-> 实例化--> 属性赋值 -->初始化 -->使用 -->销毁
-
-* 实例化：
-
-### Bean的作用域
-> singleton、prototype、request、session、global-session
-
-### Spring中的单例Bean的线程安全问题
-> 单例Bean存在线程安全问题，也就是多个线程同时对Bean的操作可能会造成意料之外的结果；
-> 但大多数线程操作都是对Bean进行查询操作，即使用Bean中的方法等，一般不会修改；
-> 大多数Bean都是无状态的，只关注与方法本身；
-
-* 解决单例Bean线程安全问题：
-	* 将Bean定义为多例，每个线程请求都获取一个独立的Bean；
-	* 将Bean的成员变量保存在ThreadLocal中；
-
-
-
 ### IoC示例
 #### 基于XML文件方式配置Bean对象
 * 引入jar包：
@@ -210,6 +186,39 @@ public class XxxConfig {
 	}
 }
 ```
+
+## Bean
+### BeanDefinition 与 Bean
+> BeanDefiniition是Spring容器创建、保存Bean的信息提供。
+
+* BeanDefinition是Spring中用来描述bean的顶级接口，里面存放Bean的元数据，如Bean的类型、构造函数参数列表、所依赖的Bean、是否是单例Bean、是否懒加载等信息。
+* Bean是我们需要的对象，从Spring容器中获得的对象实例就是Bean。
+
+### Bean的生命周期
+> 实例化--> 属性赋值 -->初始化 -->使用 -->销毁
+
+* 实例化：
+
+### Bean的作用域
+> singleton、prototype、request、session、global-session
+
+### Spring中的单例Bean的线程安全问题
+> 单例Bean存在线程安全问题，也就是多个线程同时对Bean的操作可能会造成意料之外的结果；
+> 但大多数线程操作都是对Bean进行查询操作，即使用Bean中的方法等，一般不会修改；
+> 大多数Bean都是无状态的，只关注与方法本身；
+
+* 解决单例Bean线程安全问题：
+	* 将Bean定义为多例，每个线程请求都获取一个独立的Bean；
+	* 将Bean的成员变量保存在ThreadLocal中；
+
+### Bean的循环依赖问题
+> A依赖B且B依赖A，或者C依赖C，就构成了循环依赖
+
+* Prototype作用域的Bean，Spring启动时会直接报错；
+* Singleton作用域的Bean，Spring会根据注入方式解决一部分；
+### Spring可解决的Bean循环依赖类型
+
+
 ## AOP
 > AOP（Aspect Oriented Programming）即面向切面编程，AOP 是 OOP（面向对象编程）的一种延续，二者互补，并不对立。
 
