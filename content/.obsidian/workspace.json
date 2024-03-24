@@ -188,11 +188,12 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -206,6 +207,7 @@
   },
   "active": "7fa896db8ee05638",
   "lastOpenFiles": [
+    "img/HashMap底层结构.png",
     "img/Java主要集合框架.png",
     "Spring.md",
     "Java.md",

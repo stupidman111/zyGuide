@@ -130,8 +130,12 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 		* 
 	* `threshold--阈值`：
 		* `threshold = capacity * loadFactor`，当`size > threshol`时，就需要考虑对数组进行扩容，会设计到rehash。
-	* `Node节点`
-	* `TreeNode节点`
+	* `Node节点`：
+	* `TreeNode节点`：
+
+![](./img/HashMap底层结构.png)
+* **桶数组是用来存储数据元素的，链表是用来解决哈希冲突的，红黑树是为了提高查询的效率**；
+* 数据元素通过映射关系（扰动函数获取hash值，再对数组
 ### 链表与红黑树的转换
 
 
