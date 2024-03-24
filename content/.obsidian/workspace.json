@@ -49,7 +49,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "算法.md",
+                "file": "Spring.md",
                 "mode": "source",
                 "source": false
               }
@@ -67,8 +67,7 @@
               }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -118,7 +117,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "算法.md",
+                "file": "Spring.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "算法.md",
+                "file": "Spring.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +174,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "算法.md"
+                "file": "Spring.md"
               }
             }
           },
@@ -187,12 +187,11 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -204,26 +203,26 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "7fa896db8ee05638",
+  "active": "65ff0c766fa34cf0",
   "lastOpenFiles": [
+    "Redis.md",
+    "Spring.md",
+    "算法.md",
     "面试题.md",
     "Java.md",
     "img/红黑树.png",
     "img/HashMap底层结构.png",
     "img/Java主要集合框架.png",
-    "Spring.md",
     "Kafka.md",
     "Linux.md",
     "img/Java容器继承图.png",
     "Tools.md",
     "img/Kafka模型.png",
     "index.md",
-    "Redis.md",
     "Go.md",
     "img/Spring中各模块之间的依赖关系.png",
     "MySQL.md",
     "img/Go-执行顺序.png",
-    "OS.md",
-    "算法.md"
+    "OS.md"
   ]
 }

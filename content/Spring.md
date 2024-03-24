@@ -30,6 +30,50 @@
 - **spring-websocket**：提供了对 WebSocket 的支持，WebSocket 可以让客户端和服务端进行双向通信。
 - **spring-webflux**：提供对 WebFlux 的支持。WebFlux 是 Spring Framework 5.0 中引入的新的响应式框架。与 Spring MVC 不同，它不需要 Servlet API，是完全异步。
 
+# Spring特性
+* IoC和DI；
+* AOP面向切面编程；
+* 声明式事务（不需要通过硬编码的方式进行事务管理）；
+* 快速测试；
+* 快速集成；
+* 复杂API模板封装；
+
+# Spring常用注解
+> Spring 有很多模块，甚至广义的 SpringBoot、SpringCloud 也算是 Spring 的一部分，我们来分模块，按功能来看一下一些常用的注解：
+
+## Web
+* @Controller：组合了@Component注解，应用在MVC控制层；
+* @RestController：@ResponseBody + @Controller，表示该类是一个MVC的handler，且所有方法都默认将数据放在响应体中返回，且告知前端控制器`DispatchServlet`不需要在去请求试图解析器。
+* @RequestMapping：用于Web映射，包括请求路径和参数；若是Restful风格接口，还支持：
+	* @GetMapping：
+	* @PostMapping：
+	* @PutMapping：
+	* @DeleteMapping：
+* @ResponseBody
+* @RequestBody：从请求体中获取数据
+* @PathVariable：接受路径参数
+## 容器
+* @Component：
+* @Service：组合注解，应用在Service业务逻辑层；
+* @Repository：组合注解，应用在dao数据访问层；
+* @Autowired：Spring提供的自动依赖注入注解，由BeanPostProcessor和BeanPostProcrssFactory自动注入；
+* @Qualifier：指定`@Autowired`注入的bean的名字；
+* @Configuration：标注该类为配置类，可被Spring扫描到；相当于xml配置文件；
+* @Value：可以提取配置文件中的值赋值给变量；
+* @Bean：
+* @Scope：以什么方式去创建bean，eg：Singleton、Prototype、Request、Session、GlobalSession
+
+## AOP
+* @Aspect：什么一个类为切面类，在该类中可以定义通知方法；
+	* @After
+	* @Before
+	* @Around
+	* @PointCut：声明切点
+
+## 事务
+* @Transactional：
+
+# Spring中用到的设计模式
 
 # IoC & AOP
 > IoC--`Inversion of Control`--控制反转，AOP--面向切面编程
