@@ -248,13 +248,25 @@ class B {
 * Singleton作用域的Bean，Spring会根据注入方式解决一部分；
 ### Spring可解决的Bean循环依赖类型
 > Spring中存在的三种依赖注入方式：
-* 基于 构造方法 的依赖注入；
-* 基于 setter() 方法的依赖注入；
-* 基于 成员变量 的依赖注入；
+* 基于 构造方法 的依赖注入；--无法解决
+* 基于 setter() 方法的依赖注入；--可以解决
+* 基于 成员变量 的依赖注入；--可以解决
 
-> Spring只能解决Singleton作用域的Bean的循环依赖（解决一部分）
+> Spring只能解决Singleton作用域的Bean的基于setter() / 成员变量的依赖注入方式的循环依赖问题。
 
-https://juejin.cn/post/7002874888448917534
+### 三级缓存解决循环依赖问题
+> 一个Bean要初始化完成，至少需要三步：
+* 实例化：
+* 属性赋值：注入
+* 初始化：
+
+> 三级缓存：
+* 一级缓存：`Map<String,Object>` **singletonObjects**，单例池，用于保存实例化、属性赋值（注入）、初始化完成的 bean 实例
+* 二级缓存：`Map<String,Object>` **earlySingletonObjects**，早期曝光对象，用于保存实例化完成的 bean 实例
+* 三级缓存：`Map<String,ObjectFactory<?>>` **singletonFactories**，早期曝光对象工厂，用于保存 bean 创建工厂，以便后面有机会创建代理对象。
+
+> 为什么二级缓存不行？
+
 
 ## AOP
 > AOP（Aspect Oriented Programming）即面向切面编程，AOP 是 OOP（面向对象编程）的一种延续，二者互补，并不对立。
