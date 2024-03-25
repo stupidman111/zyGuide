@@ -596,3 +596,9 @@ DispatchServlet -> HandlerMapping -> HandlerExecutionChain(HandlerInterceptor&Ha
 # Spring Boot
 > 约定大于配置。
 
+## Spring Boot自动装配原理
+
+## Spring Boot启动原理
+
+
+
