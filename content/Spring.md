@@ -573,3 +573,26 @@ public @interface Transactional {
 - 底层使用的数据库必须支持事务机制，否则不生效；
 
 # Spring MVC
+## 核心组件
+* DispatcherServlet：前置控制器/请求分发器，整个流程控制的核心，控制其他组件的执行，进行统一调度，降低组件之间的耦合性，相当于总指挥。
+* Handler：处理器，完成具体的业务逻辑，相当于 Servlet 或 Action。
+* HandlerMapping：DispatcherServlet 接收到请求之后，通过 HandlerMapping 将不同的请求映射到不同的 Handler。
+* HandlerInterceptor：处理器拦截器，是一个接口，如果需要完成一些拦截处理，可以实现该接口。
+* HandlerExecutionChain：处理器执行链，包括两部分内容：Handler 和 HandlerInterceptor（系统会有一个默认的 HandlerInterceptor，如果需要额外设置拦截，可以添加拦截器）。
+* HandlerAdapter：处理器适配器，Handler 执行业务方法之前，需要进行一系列的操作，包括表单数据的验证、数据类型的转换、将表单数据封装到 JavaBean 等，这些操作都是由 HandlerApater 来完成，开发者只需将注意力集中业务逻辑的处理上，DispatcherServlet 通过 HandlerAdapter 执行不同的 Handler。
+* ModelAndView：装载了模型数据和视图信息，作为 Handler 的处理结果，返回给 DispatcherServlet。
+* ViewResolver：视图解析器，DispatcheServlet 通过它将逻辑视图解析为物理视图，最终将渲染结果响应给客户端。
+
+## 工作流程
+![](./img/SpringMVC工作原理.png)
+DispatchServlet -> HandlerMapping -> HandlerExecutionChain(HandlerInterceptor&Handler) -> HandlerAdapter -> ModelAndView -> ViewSolver -> DispatchServlet
+在前后端分离的情况下，Handler执行完会直接返回JSON数据，返回的ModelAndView为null
+
+### 前后端不分离的工作流程
+
+### 前后端分离的Restful风格的工作流程
+
+
+# Spring Boot
+> 约定大于配置。
+

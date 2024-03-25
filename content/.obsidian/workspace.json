@@ -191,7 +191,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -205,6 +206,7 @@
   },
   "active": "65ff0c766fa34cf0",
   "lastOpenFiles": [
+    "img/SpringMVC工作原理.png",
     "算法.md",
     "Spring.md",
     "img/getter:setter循环依赖解决.png",
