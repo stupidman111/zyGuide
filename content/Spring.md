@@ -282,11 +282,131 @@ class B {
 * 织入：
 
 ### 静态代理
-
+> 比较简单，是通过硬编码的方式，代理类需要实现和目标类一样的接口。
+* 接口类：
+```
+public interface ISolver {  
+    void solve();  
+}
+```
+* 目标类：
+```java
+public class Solver implements ISolver {    
+    @Override  
+    public void solve() {  
+       System.out.println("解决问题...");  
+    }
+}
+```
+* 代理类：代理类要实现接口，并且维护一个目标对象（简单来说，就是代理类拥有一个被代理的对象，调用代理类执行方法时，代理类方法中再调用被代理类的方法）
+```java
+public class SolverProxy implements ISolver {  
+	//目标对象（被代理对象）
+    private ISolver target;  
+  
+    public SolverProxy(ISolver target) {  
+       this.target = target;  
+    }  
+    
+    @Override  
+    public void solve() {  
+       System.out.println("获取问题...");  
+       target.solve();  
+       System.out.println("问题解决...");  
+    }
+}
+```
+* 测试：
+```java
+	ISolver solver = new Solver();
+	SolverProxy solverProxy = new SolverProxy(solver);  
+	solverProxy.solve();//调用代理类的方法，实际上会调用增强的被代理类的方法
+```
+> 缺点：冗余，可维护性低
 ### 动态代理
 > 动态代理一般有两种方式：JDK动态代理，CGLIB动态代理
-* JDK动态代理：
-* CGLIB动态代理：
+> Spring AOP就用到了动态代理技术：
+> 具体地，当被代理对象实现了接口时，就会使用JDK动态代理来代理该对象；
+> 当被代理对象没有实现接口，且不是final类时，会使用CGLIB动态代理来代理该对象；
+> MyBatis中的Mapper接口也是通过动态代理技术实现的。
+#### JDK动态代理：
+> JDK动态代理利用了JDK**反射**机制，动态地在内存中构建代理对象，从而实现对目标对象的代理功能。
+* 主要用到：`java.lang.reflect.Proxy`类的`public static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)`方法--返回一个指定接口的代理类实例，该接口可以将方法调用指派到指定的调用处理程序
+* `java.lang.reflect.InvocationHandler`类的`public Object invoke(Object proxy, Method method, Object[] args) throws Throwable` 方法--在代理实例上调用目标方法，并返回结果。
+
+```java
+public class ProxyFactory {  
+    private Object target;  
+  
+    public ProxyFactory(Object target) {  
+       this.target = target;  
+    }  
+    
+    public Object getProxyInstance() {  
+       return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), new InvocationHandler() {  
+        @Override  
+          public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {  
+			 System.out.println("获取问题...");  
+	
+			 Object returnValue = method.invoke(target, args);  
+	
+			 System.out.println("问题解决...");  
+	
+			 return null;  
+	        }       
+	    });    
+	}
+}
+```
+
+* JDK动态代理，目标对象必须得实现接口，也就是说它是面向接口的，假如我们不想要接口可以使用CGLIB动态代理。
+#### CGLIB动态代理：
+> 无需被代理对象实现接口，无侵入。
+
+* 引入依赖：
+```java
+<dependency>  
+	<groupId>cglib</groupId>  
+	<artifactId>cglib</artifactId>  
+	<version>3.2.5</version>  
+</dependency>
+```
+* 目标类（不需要实现接口）：
+```java
+public class Solver {    
+    @Override  
+    public void solve() {  
+       System.out.println("解决问题...");  
+    }
+}
+```
+* 动态代理工厂：
+```java
+public class CglibProxyFactory implements MethodInterceptor {  
+    private Object target;  
+  
+    public CglibProxyFactory(Object target) {  
+       this.target = target;  
+    }  
+
+	//获取代理对象实例
+    public Object getProxyInstance() {  
+       Enhancer enhancer = new Enhancer();
+       enhancer.setSuperclass(target.getClass());  
+       enhancer.setCallback(this);  
+       return enhancer.create();  
+    }  
+
+    @Override  
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {  
+       System.out.println("获取问题...");  
+       Object returnValue = method.invoke(target, objects);  
+       System.out.println("问题解决...");  
+       return null;  
+    }}
+```
+
+* CGLIB不能对声明为final的方法进行代理，因为final的类不能被继承。
 ### Spring AOP 的自调用问题
 * 首先，*如果目标方法是被同一个实例中的其他方法调用的，则AOP切面可能会失效*。这是因为Spring AOP是通过代理机制实现的，而代理只会拦截外部调用，而不会拦截同一个实例中的方法调用。为了解决这个问题，可以将目标方法抽离成一个单独的类，并通过Spring的依赖注入机制将其注入到目标类中。
 	* ps：也可以在主调方法内获取当前类的代理对象，然后通过代理对象调用被调方法：
