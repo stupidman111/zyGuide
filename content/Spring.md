@@ -107,7 +107,7 @@
 	* 装配到BeanDefinition
 	* 其他处理
 * Bean实例化阶段：
-	* 实例化对象；
+	* 通过BeanDefinition实例化对象；
 	* 装配依赖；
 	* 生命周期回调；
 	* 对象其他处理；
