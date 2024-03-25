@@ -428,22 +428,47 @@ public class CglibProxyFactory implements MethodInterceptor {
 ## Spring支持两种方式的事务管理
 ### 编程式事务管理
 > 通过`TransactionTemplate`或者`TransactionManager`手动管理事务，实际应用中很少使用。
+> 需要显式执行事务。允许我们在代码中直接控制事务的边界，通过编程方式明确指定事务的开始、提交和回滚。
+> 使用 TransactionTemplate 来实现编程式事务，通过 execute 方法来执行事务，这样就可以在方法内部实现事务的控制，编程式事务对事务的管理是代码块级别的。
 
 ```java
-
-@Autowired
-private TransactionTemplate transactionTemplate;
-
-public void testTransaction() {
-	
-}
+@Service
+public class AccountService {  
+    private TransactionTemplate transactionTemplate;  
+  
+    public AccountService(TransactionTemplate transactionTemplate) {  
+       this.transactionTemplate = transactionTemplate;  
+    }  
+    public void transfer(final String out, final String in, final Double money) {  
+       transactionTemplate.execute(new TransactionCallbackWithoutResult() {  
+          @Override  
+          protected void doInTransactionWithoutResult(TransactionStatus status) {  
+             //转出  
+             //转入  
+          }  
+       });    }}
 ```
 ### 声明式事务管理
 > 通过AOP实现，基于`@Transactional`的全注解方式使用最多。
 ```java
+@Service
+public class AccountService {
+    @Autowired
+    private AccountDao accountDao;
+
+    @Transactional
+    public void transfer(String out, String in, Double money) {
+        // 转出
+        accountDao.outMoney(out, money);
+        // 转入
+        accountDao.inMoney(in, money);
+    }
+}
 
 ```
-
+> 原理：
+> 	在Bean初始化阶段创建代理对象；
+> 	在执行目标方法时进行事务增强操作；
 ## Spring事务属性
 ### 事务传播行为
 * `TransactionDefinition.PROPAGATION_REQUIRED`：
@@ -491,6 +516,7 @@ public void testTransaction() {
 * 方法：推荐将事务注解在方法上使用，注意只能应用到`public`权限的方法上，否则不生效。
 * 类：如果在类上使用事务注解，那么该类下的所有`public`方法都生效；
 * 接口：不推荐在接口上使用；
+
 ### 常用配置参数
 ```java
 @Target({ElementType.TYPE, ElementType.METHOD})
@@ -539,8 +565,11 @@ public @interface Transactional {
 >当一个方法被标记了`@Transactional` 注解的时候，Spring 事务管理器只会在被其他类方法调用的时候生效，而不会在一个类中方法调用生效。
 [[Spring#Spring AOP 的自调用问题]]
 ### 注意事项
-- `@Transactional` 注解只有作用到 public 方法上事务才生效，不推荐在接口上使用；
+- `@Transactional` 注解只有作用到 public 方法上事务才生效，不推荐在接口上使用：
+	- 因为`@Transactional`声明式事务是通过动态代理的方式来实现的，而Spring的AOP基于JDK和CGLIB，这两种代理机制都只能代理public方法。
 - 避免同一个类中调用 `@Transactional` 注解的方法，这样会导致事务失效；
 - 正确的设置 `@Transactional` 的 `rollbackFor` 和 `propagation` 属性，否则事务可能会回滚失败;
 - 被 `@Transactional` 注解的方法所在的类必须被 Spring 管理，否则不生效；
 - 底层使用的数据库必须支持事务机制，否则不生效；
+
+# Spring MVC
