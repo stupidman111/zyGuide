@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C++.md",
+                "file": "Java.md",
                 "mode": "source",
                 "source": false
               }
@@ -130,7 +130,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -146,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++.md",
+                "file": "Java.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -163,7 +164,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++.md",
+                "file": "Java.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -186,7 +187,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++.md"
+                "file": "Java.md"
               }
             }
           },
@@ -217,8 +218,8 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
-    "Spring.md",
     "C++.md",
+    "Spring.md",
     "img/SpringMVC工作原理.png",
     "算法.md",
     "img/getter:setter循环依赖解决.png",
