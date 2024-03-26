@@ -311,3 +311,5 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
 
 ## 线程池
+> 池化技术的思想主要是为了减少每次获取资源的消耗，提高对资源的利用率。
+
