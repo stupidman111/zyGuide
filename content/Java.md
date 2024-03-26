@@ -312,4 +312,18 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
 ## 线程池
 > 池化技术的思想主要是为了减少每次获取资源的消耗，提高对资源的利用率。
+> 线程池创建的两种方式：`ThreadPoolExecutor`构造函数、`Executor框架的工具类Executors`创建
 
+### 常用阻塞队列
+
+
+### ThreadPoolExecutor构造函数创建线程池
+* 参数：
+
+### Executor框架内置线程池
+> 框架内内置了线程池：
+
+* `FixedThreadPool`
+* `SingleThreadExecutor`
+* `CachedThreadPoll`
+* `ScheduledThreadPoll`
