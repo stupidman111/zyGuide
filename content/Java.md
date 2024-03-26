@@ -172,6 +172,9 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
 
 # JUC
+## 线程死锁
+[[Linux#死锁]]
+
 ## synchronized锁升级原理
 > synchronized锁升级原理涉及Java对象内存布局、JVM指针压缩。
 
@@ -250,6 +253,22 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 ### xxx
 
 ### ReentrantLock
+> 可重入锁。
+* Sync内部类（继承自`AQS`）
+* NonfairSync内部类（继承自Sync）---非公平锁。
+	* 默认创建的是非公平锁。
+	* 锁可能会分配给刚刚请求它的线程，而不考虑等待时间。
+* FairSync内部类（继承自Sync）---公平锁。
+	* 构造方法传入true，创建公平锁。
+	* 锁会按先来先得的队列形式，等待时间最长的线程获取锁。
+
+* lock()：
+	* 检查当前锁是否被其他线程所持有，若持有，则加入等待队列中；
+	* 首次获取锁时，计数器+1，每重入一次，计数器+1；
+* unLock()：
+	* 每释放一次锁，计数器-1；
+	* 计数器减到0，则释放锁；
+> 计数器指的是AQS中的state，会采用CAS的方式设置state。
 
 ### ReentrantReadWriteLock
 
@@ -259,4 +278,36 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 > AQS 为构建锁和同步器提供了一些通用功能的实现，因此，使用 AQS 能简单且高效地构造出应用广泛的大量的同步器，比如我们提到的 `ReentrantLock`，`Semaphore`，其他的诸如 `ReentrantReadWriteLock`，`SynchronousQueue`等等皆是基于 AQS 的。
 
 
+* 核心思想：
+	* 如果被请求的共享资源空闲，则将当前请求资源的线程设置为有效的工作线程，并且将共享资源设置为锁定状态；
+	* 如果被请求的共享资源被占用，则需要一套线程阻塞等待以及被唤醒时锁分配的机制，AQS使用`CLH`队列锁来实现，即将暂时获取不到锁的线程加入到该队列中。
+* CLH队列：是一个虚拟的双向队列（不存在队列实例，进存在节点之间的关联关系）。AQS将每条请求共享资源且暂时获取不到锁的线程封装成一个Node加入到CLH队列当中来实现锁的分配。一个Node表示一个线程，保存线程的引用、当前节点在队列中的状态、前驱节点、后继节点。
+* state：AQS使用volatile修饰的int成员变量state来表示同步状态，通过`CLH`队列来完成请求获取资源线程的排队工作。
 
+## CAS
+> CompareAndSwap，比较并交换。
+> 主要通过处理器的指令来保证操作的原子性。
+
+* CSA指令包含3个参数，共享变量的内存地址A，预期值B，共享变量的新值C；
+* 仅当内存地址A处的值等于B时，才能将内存地址A处的值更新为C，作为一条CPU指令，CAS指令本身是能够保证原子性的。
+
+* CAS三大经典问题：
+	* ABA问题：
+		* 修改共享变量时，其值为A，就会执行修改，但是修改期间，该值又被其他线程修改成了B，然后又被其他线程修改成了A，这样就导致了该值虽然修改成功，但是修改也发生了数据变化。
+		* 解决--加版本号，每次修改都对版本号+1，那么ABA问题就会导致他的版本号发生变化，我们修改时就会发现版本号不一致导致修改失败。
+	* 循环性能开销：
+		* CAS会一直循环执行，若一直不成功，CPU开销大；
+		* 解决--设置自旋次数，超过一定次数，停止自旋。
+	* 只能保证一个变量的原子操作：
+		* 解决--对多个变量的操作加锁保证原子性。
+		* 解决--封装多个变量为一个对象进行CAS操作，通过AtomicRefrence保证原子性。
+## Java保证原子性的方法
+* 使用循环原子类：AtomicXxx，如AtomicInteger，AtomicRefrecne等；
+* 使用juc下的锁，ReentrantLock；
+* 使用synchronized；
+
+## AtomicInteger的原理
+> 使用CAS实现
+
+
+## 线程池
