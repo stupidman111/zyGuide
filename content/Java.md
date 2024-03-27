@@ -373,10 +373,34 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 	* `unit`：keepAliveTime参数的时间单位
 	* `threadFacotry`-线程工厂：executor创建新线程时会用到
 	* `handler`-饱和策略：
+
+### 线程池原理
+* 提交任务；
+* 判断当前运行线程数是否达到最大核心线程数；
+	* 否，创建新线程处理任务立刻执行这个任务；
+* 是，判断任务队列是否已满；
+	* 否，加入任务队列；
+* 是，判断线程数是否达到最大线程数；
+	* 否，创建新线程立刻执行这个任务；
+* 是，根据拒绝策略处理；
+
 ### Executor框架内置线程池
 > 框架内内置了线程池：
 
-* `FixedThreadPool`
-* `SingleThreadExecutor`
-* `CachedThreadPoll`
-* `ScheduledThreadPoll`
+* `FixedThreadPool`--可重用固定线程数的线程池
+	* corePoolSize和maximumPoolSize相等；
+	* 使用的是容量为`Integer.MAX_VALUE`的`LinkedBlockingQueue`，队列不会放满；
+	* 缺点：
+		* 不会拒绝任务，任务太多时会OOM（内存溢出）
+* `SingleThreadExecutor`--只有一个线程的线程池
+	* corePoolSize和maximumPoolSize都为1；
+	* 使用无界队列；
+	* 缺点：
+		* 任务太多，OOM
+* `CachedThreadPoll`--根据需要创建新线程的线程池
+	* corePoolSize为0，maximumPoolSize为Integer.MAX_VALUE；
+	* 使用不存储任务的`SynchronousQueue`；
+	* 提交任务，若有空闲线程就交给空闲线程处理，否则就创建新线程执行，创建过多会耗尽cpu和内存资源；
+* `ScheduledThreadPoll`--定期执行任务的线程池
+	* 使用`DelayQueue`任务队列，按照延迟时间从小到大排序，1.5倍数扩容，不会阻塞，最大为Integer.MAX_VALUE；
+	* 
