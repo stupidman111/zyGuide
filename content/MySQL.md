@@ -143,6 +143,11 @@ select ... for update;
 > binlog 文件是记录了所有数据库表结构变更和表数据修改的日志，不会记录查询类的操作，比如 SELECT 和 SHOW 操作。
 
 * MySQL主从复制：
+	* 写入Binlog：主库写 binlog 日志，提交事务，并更新本地存储数据。
+	* 同步Binlog：把 binlog 复制到所有从库上，每个从库把 binlog 写到暂存日志中。
+	* 回放Binlog：回放 binlog，并更新存储引擎中的数据。
+* Binlog刷盘：
+	* 事务执行过程中，先把日志写到 binlog cache（Server 层的 cache），事务提交的时候，再把 binlog cache 写到 binlog 文件中。
 
 ## buffer pool
 > InnoDB存储引擎的缓存池，应用于缓存数据页。并不是Server层的查询缓存（查询缓存的是以sql为key，查询结果为value的键值对）。
@@ -152,6 +157,13 @@ select ... for update;
 * undo页：开启事务后，更新记录前首先要记录对应的`undo log`，如果是更新操作，还需要把被更新的列的旧值记下来生成一条`undo log`写入到undo页当中。
 
 ## 两阶段提交
+> 目的：避免出现两份日志之间的逻辑不一致的问题。
+> 两阶段提交其实是分布式事务一致性协议，它可以保证多个逻辑操作要不全部成功，要不全部失败，不会出现半成功的状态。
+
+两阶段提交把单个事务的提交拆分成了2个阶段（针对redo log）：
+* 准备阶段：提交事务前写入redo log（prepare阶段）
+* 提交阶段：提交事务时写入binlog并设置redo log为commit阶段；
+
 
 
 ## 问题总结

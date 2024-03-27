@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MySQL.md",
+                "file": "Redis.md",
                 "mode": "source",
                 "source": false
               }
@@ -130,8 +130,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -147,7 +146,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "MySQL.md",
+                "file": "Redis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -164,7 +163,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "MySQL.md",
+                "file": "Redis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -187,7 +186,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "MySQL.md"
+                "file": "Redis.md"
               }
             }
           },
@@ -218,6 +217,7 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
+    "MySQL.md",
     "Java.md",
     "Linux.md",
     "img/对象结构-对象头-Markword.png",
@@ -238,7 +238,6 @@
     "index.md",
     "Go.md",
     "img/Spring中各模块之间的依赖关系.png",
-    "MySQL.md",
     "img/Go-执行顺序.png",
     "OS.md"
   ]
