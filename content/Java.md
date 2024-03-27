@@ -348,12 +348,20 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 > 线程池创建的两种方式：`ThreadPoolExecutor`构造函数、`Executor框架的工具类Executors`创建
 
 ### 常用阻塞队列
+> 新任务到来时，当前正在运行的线程数量是否达到了核心线程数量，如果达到了就将新任务加入阻塞任务队列中等待执行。
+* `ArrayBlockingQueue`：数组实现的有界队列，传参定义大小，按FIFO排序。
+* `LinkedBlockingQueue`：容量为`Integer.MAX_VALUE`的无界队列。
+* `DelayQueue`：按照指定的延时时间任务进行排序，内部是基于堆实现的。
+* `PriorityBlockingQueue`：具有优先级的无界阻塞队列。
+* `SynchronousQueue`：不存储元素，目的是保证对于提交的任务，如果有空闲线程则使用空闲线程来处理，否则创建一个线程来处理任务。
 
-### 线程池饱和策略
-> 当线程池中同时运行的线程数达到了最大线程数量，且任务队列已经放满任务时，ThreadPoolExecutor定义了一些饱和策略来处理新来的任务。
+### 线程池饱和策略/拒绝策略
+> 当线程池中同时运行的线程数达到了最大线程数量，且任务队列已经放满任务时，ThreadPoolExecutor定义了一些饱和策略来拒绝新来的任务。
 
 * `ThreadPoolExecutor.AbortPolicy`：抛出异常拒绝新任务的处理（RejectExecutionException）；
-* `ThreadPoolExecutor.CallerRunPolict`：
+* `ThreadPoolExecutor.CallerRunPolicy`：让提交任务的线程也就是执行`execute`方法的线程自己来执行该任务；
+* `ThreadPoolExecutor.DiscardPolicy`：不处理直接丢弃，也不抛异常。
+* `ThreadPoolExecutor.DiscardOldestPolicy`：丢弃最早的未处理的任务，尝试将新任务加入任务队列。
 
 ### ThreadPoolExecutor构造函数创建线程池
 * 参数：
