@@ -24,7 +24,31 @@
 	* 两个对象的hashCode不相等，那么可以直接认为这两个对象不相等；
 
 ## String、StringBuilder、StringBuffer
+- String为什么不可变：
+	- 什么是不可变：当给String赋一个字符串字面值时，改变的是String引用所指向的地址，而不是String原指向字符串的值--这里有一个字符串常量池的概念；
+	- String类型是`final`修饰的：保证了String类型不可被继承；
+	- String底层使用了一个`private final`修饰的`char[]`：
+		- final修饰保证了这个char[] 不会指向别的对象；
+		- private保证了这个对象的不可见性（且String是不可继承的）；
+		- 且没有提供修改这个char[]中元素的方法；
+	- 这种不可变的好处：安全，比如在使用String作为参数传递时，不会发生对原String不易发现的修改；
 
+- StringBuffer、StringBuilder：
+	- 都继承自`AbstractStringBuilder`，底层使用没有任何修饰的`char[]`来保存字符串，且提供了很多修改字符串的方法；
+	- StringBuffer中很多对字符串的操作都加了`synchronized`关键字，所以是线程安全的；StringBuilder线程不安全；
+
+- 字符串拼接用`+`还是`StringBuilder`？
+	- `+`、`+=`是Java中仅有的两个重载过的运算符，且专门为String类重载；
+	- JDK1.8及之前，在循环内使用`+`、`+=`实现字符串拼接，每循环执行一次，底层编译器就会创建一个`StringBuilder`对象进行拼接；
+	- JDK1.9开始，字符串相加 “+” 改为了用动态方法 makeConcatWithConstants() 来实现，而不是大量的 StringBuilder 了。
+
+- String重写过的equals：比较的是字符串的值是否相等。
+- 字符串常量池的作用：JVM 为了提升性能和减少内存消耗针对字符串（String 类）专门开辟的一块区域，主要目的是为了避免字符串的重复创建。
+- String#intern方法的作用：
+	- `s1.intern()`：若s1直接指向字符串常量池中的字符串引用，则返回该引用；
+	- `s1.intern()`：若s1指向堆空间的字符串对象，直接返回该对象在常量池中的字符串引用；
+
+- String类型的变量和常量做`+`运算时发生了什么？
 
 ## 常量折叠
 常量折叠会把常量表达式的值求出来作为常量嵌在最终生成的代码中，这是 Javac 编译器会对源代码做的极少量优化措施之一(代码优化几乎都在即时编译器中进行)。
