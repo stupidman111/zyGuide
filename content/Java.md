@@ -368,6 +368,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 	* `corePoolSize`-线程池的核心线程数量：任务队列未达到队列容量时，最大可以同时运行的线程数量。
 	* `maximumPoolSize`-线程池的最大线程数量：任务队列达到队列容量时，当前可以同时运行的线程的数量变为最大线程数。
 	* `workQueue`-任务队列：新任务到来时会判断当前运行的线程数量是否达到核心线程数，如果达到的话，新任务会被放到任务队列中等待线程执行。
+
 	* `keepAliveTime`：核心线程之外的其他线程，空闲时最大等待时间，超过这个时间如果还没有任务执行就会被销毁。
 	* `unit`：keepAliveTime参数的时间单位
 	* `threadFacotry`-线程工厂：executor创建新线程时会用到
