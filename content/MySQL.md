@@ -103,3 +103,65 @@ select ... for update;
 # MySQL日志
 > undo log、 redo log、 binlog
 
+## undo log
+> 保障事务的原子性（回滚）
+> 实现MVCC
+
+* 回滚：
+	* 通过记录的`trx_id`知道该记录是被哪个事务所修改的；
+	* 通过记录的`roll_pointer`指针可以将同一条记录的多个`undo log`串联成一个链表，称为`版本链`。
+* ReadView + undolog 实现MVCC并发版本控制
+	* 事务执行快照读时会根据版本链读取自己可见的数据。
+	* 实现可重复读隔离机制。
+
+* 刷盘：
+	* undo log和数据页的刷盘策略一样，都需要redo log来保证持久化。
+	* buffer pool中也有对应的 undo 页，对undo页的修改也会记录到redo log中，redo log根据对应的刷盘策略来刷盘。
+
+## redo log
+> 保证事务四大特性中的`持久性`。
+> 宕机重启后，MySQL根据redo log中的内容将数据恢复到最新状态。
+> InnoDB层。
+
+记录更新时，想更新Buffer Pool中的数据页，并标记为脏，然后将修改以`redo log`的形式记录；后续由后台线程将缓存在Buffer Pool的脏页刷新到磁盘。
+* `WAL`技术：MySQL的写操作并不是立即写到磁盘上，而是先写日志，然后在合适的时间再写到磁盘上。
+* `redo log`是物理日志，记录个某个数据页走了什么修改：
+	* 对xxx表空间的YYY数据页ZZZ偏移量的地方做了AAA更新。
+* redo log刷盘策略：
+	* redo log有自己的缓存--`redo log buffer`
+	* 刷盘实际：
+		*  MySQL 正常关闭时；
+		* 当 redo log buffer 中记录的写入量大于 redo log buffer 内存空间的一半时，会触发落盘；
+		* InnoDB 的后台线程每隔 1 秒，将 redo log buffer 持久化到磁盘。
+		* 每次事务提交时都将缓存在 redo log buffer 里的 redo log 直接持久化到磁盘（这个策略可由 innodb_flush_log_at_trx_commit 参数控制）
+			* 为0：不主动触发刷盘；
+			* 为1：每次提交事务都将redo log buffer中的redo log刷盘，会调用`async`函数进行强制刷盘；
+			* 为2：每次事务提交都写入到`redo log`，但只是执行`write`写入到`page cache`中，后台线程每隔1s调用一次`async`进行强制刷盘；
+## binlog
+> binlog用于备份恢复、主从复制。
+> MySQL 在完成一条更新操作后，`Server` 层还会生成一条 binlog，等之后事务提交的时候，会将该事物执行过程中产生的所有 binlog 统一写 入 binlog 文件。
+> binlog 文件是记录了所有数据库表结构变更和表数据修改的日志，不会记录查询类的操作，比如 SELECT 和 SHOW 操作。
+
+* MySQL主从复制：
+
+## buffer pool
+> InnoDB存储引擎的缓存池，应用于缓存数据页。并不是Server层的查询缓存（查询缓存的是以sql为key，查询结果为value的键值对）。
+> 以16KB的页为单位进行缓存。
+> 
+* 缓存池会缓存：`数据页`、`索引页`、插入缓存页、`undo页`、自适应哈希索引、锁信息。
+* undo页：开启事务后，更新记录前首先要记录对应的`undo log`，如果是更新操作，还需要把被更新的列的旧值记下来生成一条`undo log`写入到undo页当中。
+
+## 两阶段提交
+
+
+## 问题总结
+### undo log 与 redo log 的区别
+* redo log记录了此次事务`完成后`的数据状态，记录的是更新之后的值；
+	* 事务提交之后发生了崩溃，重启后会通过redo log恢复事务，保证之前提交的数据不会丢失，因为提交了并不代表写入磁盘了。
+* undo log记录了此次事务`开始前`的数据状态，记录的是更新之前的值；
+	* 事务提交之前发生了崩溃，重启后会通过undo log回滚事务；
+### redo log要写入磁盘，数据也要写入磁盘，为什么要多此一举
+* 因为数据的修改是先在Buffer Pool中对应的数据页上做的修改，修改后标记为脏页，Buffer Pool中的页写入到磁盘需要一定的时间，且是随机写，比较慢；
+* redo log是追加写，磁盘操作是顺序写，速度快，且redo log记录的东西页是关键部分。
+### redo log 和 binlog的区别
+
