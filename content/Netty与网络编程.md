@@ -61,6 +61,13 @@
 * 多个Reactor，多个进程 / 线程；
 
 ### 一个Reactor，一个进程 / 线程
+> Redis使用的就是`单Reactor单进程`。
+
+
+### 一个Reactor，多个进程 / 线程
+
+
+### 多个Reactor，多个进程 / 线程
 
 
 
