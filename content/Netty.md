@@ -20,5 +20,9 @@
 			* 第二次：用户需要遍历文件描述符集合找到内核标记了发生事件的socket；
 	* poll：不再使用位图作为文件描述符集合，使用链表组织的动态数组来维护，但同样还是需要扫描，
 	* epoll：使用`epoll_create`创建epoll对象，调用`epoll_ctl`将需要监听的socket交给epoll来监听，最后调用`epoll_wait`等待数据。epoll在内核中维护红黑树来保存交给epoll监听的socket，并维护一个链表来记录就绪事件，所有事件发生了的socket都会加入到该链表当中，当用户调用epool_wait时，内核中的就绪事件socket链表会拷贝到用户空间，不再需要扫描的方式来确定那个文件描述符发生了事件。
+	* 多路复用I/O模型在一次系统调用select/poll/epoll后，仍然需要阻塞，但能够监听到多个socket的数据是否准备好，从每个socket中读取数据时，还是会阻塞一次；
+		* 第一个阻塞等待：调用select/poll/epoll同时检查多个socket的内核数据是否准备好；
+		* 接着n个阻塞等待：对select/poll/epoll返回的n个准备好数据的socket，每一个都需要调用系统调用将他们从内核缓冲区读取到用户空间中。
 * 信号驱动I/O模型：
+	* 
 * 异步I/O模型：
