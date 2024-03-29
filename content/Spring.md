@@ -198,6 +198,8 @@ public class XxxConfig {
 > 实例化--> 属性赋值 -->初始化 -->使用 -->销毁
 
 * 实例化：
+### Bean的加载过程
+
 
 ### Bean的作用域
 > singleton、prototype、request、session、global-session
