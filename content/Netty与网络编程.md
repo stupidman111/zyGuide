@@ -60,15 +60,43 @@
 * 多个Reactor，一个进程 / 线程；---这种方式没必要
 * 多个Reactor，多个进程 / 线程；
 
+一般在Reactor模式下，因为是面向对象的方式，会有Reactor、Acceptor、Handler等
 ### 一个Reactor，一个进程 / 线程
 > Redis使用的就是`单Reactor单进程`。
 
+* Reactor负责 监听、分发事件：
+	* 如果是连接事件，则调用Acceptor对象处理连接；
+	* 如果是读/写事件，则调用Handler对象处理业务逻辑；
+
+* 缺点：
+	* 单进程 / 线程，无法利用CPU多核的性能；
+	* Handler若处理了一个耗时很长的业务逻辑，那么会阻塞其他事件的响应；
 
 ### 一个Reactor，多个进程 / 线程
 
+* Reactor负责 监听、分发事件：
+	* 如果是连接事件，则调用Accept对象处理连接；
+	* 如果是读/写事件，则调用对应的Handler类型，创建对应的Handler对象，该Handler对象会调用方法，方法内会将业务逻辑交给共享的线程池中的线程来处理
+
+* 缺点：
+	* 需要注意并发线程对共享资源可能存在线程安全问题；
+	* 一个Reactor对象在高并发的情况下，容易称为瓶颈；
+
 
 ### 多个Reactor，多个进程 / 线程
+> Netty、Memcache都是基于`多Reactor多进程/多线程`的方案。
 
+* 分为主Reactor（主线程）和多个子Reactor（多个子线程）；
+* 主Reactor只负责 监听连接事件、分发已经连接完成的socket：
+	* 当连接事件发生，主Reactor立即调用Acceptor处理连接事件；
+	* 然后将连接完成的socket，分发给多个子Reactor中的一个；
+* 每个子Reactor是一个线程，每个子Reactor负责监听已连接的socket上的读写事件的发生、业务逻辑的处理：
+	* 当子Reactor所监听的已连接socket的读/写事件到来，则调用对应的Handler来处理
+
+* 好处：
+	* 主线程、子线程分工明确，主线程负责监听连接、分发连接，子线程负责监听自己管理的已连接的socket、处理业务逻辑
+
+## Proactor
 
 
 ## 零拷贝

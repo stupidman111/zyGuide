@@ -161,20 +161,6 @@
     "type": "split",
     "children": [
       {
-        "id": "10e0493f6453ab4c",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "928d03d1ecef492e",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
-            }
-          }
-        ]
-      },
-      {
         "id": "1bdd1470ab4ce22d",
         "type": "tabs",
         "children": [
@@ -227,9 +213,17 @@
                 "file": "Netty与网络编程.md"
               }
             }
+          },
+          {
+            "id": "928d03d1ecef492e",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -245,7 +239,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "0f0466833974e99c",
+  "active": "118e2625d9550c7c",
   "lastOpenFiles": [
     "面筋.md",
     "Netty与网络编程.md",
