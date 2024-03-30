@@ -163,3 +163,20 @@ public interface ChannelFuture extends Future<Void> {
 ```
 
 * 可以通过`addListener`方法来添加监听器，当监听的事件发生时，就会通知到监听器。
+
+
+> 比如，bind方法是异步的，可以根据它所返回的future（ChannelFuture），为其注册一个监听器，当bind方法完成，将会调用响应的监听器处理逻辑。
+```java
+ChannelFurure cf = bootStrap.bind(6668).sync;
+cf.addListener(new ChannelFuture() {
+	@Override
+	public void operationComplete(ChannelFuture future) throws Exception {
+		if (future.isSuccess()) {
+			//成功的逻辑
+		} else {
+			//失败的逻辑
+		}
+	}
+});
+```
+

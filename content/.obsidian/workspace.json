@@ -253,19 +253,21 @@
   },
   "active": "cd5c6b176e4b7c22",
   "lastOpenFiles": [
+    "计网.md",
+    "Tools.md",
+    "Spring.md",
+    "Redis.md",
+    "OS.md",
+    "Netty与网络编程.md",
     "img/Netty工作原理图.png",
     "面筋.md",
     "算法.md",
     "MySQL.md",
-    "Netty与网络编程.md",
     "面试题.md",
     "JUC.md",
     "未命名",
     "多线程",
-    "Spring.md",
-    "Redis.md",
     "Java.md",
-    "计网.md",
     "index.md",
     "Linux.md",
     "img/对象结构-对象头-Markword.png",
@@ -277,11 +279,8 @@
     "img/Java主要集合框架.png",
     "Kafka.md",
     "img/Java容器继承图.png",
-    "Tools.md",
     "img/Kafka模型.png",
     "Go.md",
-    "img/Spring中各模块之间的依赖关系.png",
-    "img/Go-执行顺序.png",
-    "OS.md"
+    "img/Spring中各模块之间的依赖关系.png"
   ]
 }
