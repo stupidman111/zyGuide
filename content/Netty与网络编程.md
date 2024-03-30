@@ -134,3 +134,32 @@
 	2. 处理I/O事件，即read / write事件，在对应的NioSocketChannel处理；
 	3. 处理任务队列的任务，runAllTasks（在Worker Group这里就是处理一次select调用返回的所有read / write事件的任务）
 8. 每个Work Group中的NioEventLoop处理业务时，会使用 Channel，每个Channel对应一个ChannelPipeline，每个ChannelPipeline将多个ChannelHandler串联起来，会串行调用ChannelHandler来处理事件。
+
+* 每个NioEventLoop中包含一个Selector，一个taskQueue；
+* 每个NioEventLoop中的Selector上可以注册监听多个NioChannel；
+* 每个NioChannel只会绑定在唯一的NioEventLoop上；
+* 每个NioChannel都绑定一个自己的ChannelPipeline；
+* 每个ChannelPipeline中有一个链表形式的ChannelHandler
+
+## Future机制
+> Netty的异步模型是基于 future 和 callback 的。
+> callback就是回调；
+> future的核心思想是：假设一个function，计算过程可能非常耗时，我们调用该function后一直等待他返回显然是不合适的。可以在调用该function时，立即返回一个future，后续我们只需要通过该future去监控fun是否返回接即可。（Future-Listener机制）
+
+### ChannelFuture
+```java
+public interface ChannelFuture extends Future<Void> {
+	Channel channel();  
+	ChannelFuture addListener(GenericFutureListener<? extends Future<? super Void>> var1);  
+	ChannelFuture addListeners(GenericFutureListener<? extends Future<? super Void>>... var1);  
+	ChannelFuture removeListener(GenericFutureListener<? extends Future<? super Void>> var1);  
+	ChannelFuture removeListeners(GenericFutureListener<? extends Future<? super Void>>... var1);  
+	ChannelFuture sync() throws InterruptedException;  
+	ChannelFuture syncUninterruptibly();  
+	ChannelFuture await() throws InterruptedException;  
+	ChannelFuture awaitUninterruptibly();  
+	boolean isVoid();
+}
+```
+
+* 可以通过`addListener`方法来添加监听器，当监听的事件发生时，就会通知到监听器。
