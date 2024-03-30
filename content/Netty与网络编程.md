@@ -160,9 +160,12 @@ public interface ChannelFuture extends Future<Void> {
 	ChannelFuture awaitUninterruptibly();  
 	boolean isVoid();
 }
-```
+``` 
 
 * 可以通过`addListener`方法来添加监听器，当监听的事件发生时，就会通知到监听器。
+
+> 另外，ChannelFuture继承了Future类，Future类由继承了java.util.concurrent.Future类，因此ChannelFuture还有很多继承的方法可以使用：
+
 
 
 > 比如，bind方法是异步的，可以根据它所返回的future（ChannelFuture），为其注册一个监听器，当bind方法完成，将会调用响应的监听器处理逻辑。
@@ -180,3 +183,5 @@ cf.addListener(new ChannelFuture() {
 });
 ```
 
+
+### 使用Netty搭建简单的Http服务
