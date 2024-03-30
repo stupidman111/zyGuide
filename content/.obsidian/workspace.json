@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "算法.md",
+                "file": "MySQL.md",
                 "mode": "source",
                 "source": false
               }
@@ -182,7 +182,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "算法.md",
+                "file": "MySQL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -199,7 +199,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "算法.md",
+                "file": "MySQL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -222,7 +222,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "算法.md"
+                "file": "MySQL.md"
               }
             }
           },
@@ -235,7 +235,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -253,6 +253,7 @@
   },
   "active": "cd5c6b176e4b7c22",
   "lastOpenFiles": [
+    "算法.md",
     "面筋.md",
     "面试题.md",
     "JUC.md",
@@ -269,7 +270,6 @@
     "img/对象结构-对象头-Markword.png",
     "C++.md",
     "img/SpringMVC工作原理.png",
-    "算法.md",
     "img/getter:setter循环依赖解决.png",
     "img/红黑树.png",
     "img/HashMap底层结构.png",

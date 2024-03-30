@@ -1,3 +1,6 @@
+# SQL
+* `CHAR_LENGTH`：求字符长度；
+* `LENGTH`：求字节长度；
 
 
 # 事务
