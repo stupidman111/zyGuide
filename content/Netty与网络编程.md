@@ -93,7 +93,7 @@
 	* 当连接事件发生，主Reactor立即调用Acceptor处理连接事件；
 	* 然后将连接完成的socket，分发给多个子Reactor中的一个；
 * 每个子Reactor是一个线程，每个子Reactor负责监听已连接的socket上的读写事件的发生、业务逻辑的处理：
-	* 当子Reactor所监听的已连接socket的读/写事件到来，则调用对应的Handler来处理
+	* 当子Reactor所监听的已连接socket的读/写事件到来，则调用对应的Handler来处理（Handler可继续调用线程池中的线程进行处理）
 
 * 好处：
 	* 主线程、子线程分工明确，主线程负责监听连接、分发连接，子线程负责监听自己管理的已连接的socket、处理业务逻辑
@@ -104,7 +104,7 @@
 ## 零拷贝
 
 
-# NIO
+# Java NIO
 
 ## Buffer
 
@@ -112,4 +112,25 @@
 
 ## Selector
 
-## NioSocketChannel初始化过程
+
+# Netty
+## Netty 网络模型
+> Netty主要基于主从Reactor（多Reactor）多线程模型。
+
+
+![](./img/Netty工作原理图.png)
+
+1. Netty抽象出两组“线程池”，Boss Group专门负责接收客户端的连接，Worker Group负责网络的读/写；
+2. Boss Group和Worker Group的类型都是 NioEventLoopGroup；
+3. NioEventLoopGroup相当于一个事件循环组，这个组中包含有多个事件循环，每一个事件循环是一个 NioEventLoop；
+4. NioEventLoop表示一个不断循环的执行处理任务的线程，每个NioEventLoop都有一个Selector，用于监听绑定在其上的socket的accept / read / write事件；
+5. NiotEventLoopGroup可以包含多个线程，即可以包含多个NioEventLoop；
+6. 每个Boss Group中的NioEventLoop循环执行的步骤有3步：
+	1. 轮询accept事件；
+	2. 处理accept事件，与client建立连接，生成 NioSocketChannel，并将其注册到Work Group中的某个NioEventLoop上的Selector；
+	3. 处理任务队列的任务，runAllTasks（在Boss Group这里就是处理一次select调用返回的所有连接事件的任务）；
+7. 每个Work Group中的NioEventLoop循环执行的步骤有3步：
+	1. 轮询read / write事件；
+	2. 处理I/O事件，即read / write事件，在对应的NioSocketChannel处理；
+	3. 处理任务队列的任务，runAllTasks（在Worker Group这里就是处理一次select调用返回的所有read / write事件的任务）
+8. 每个Work Group中的NioEventLoop处理业务时，会使用 Channel，每个Channel对应一个ChannelPipeline，每个ChannelPipeline将多个ChannelHandler串联起来，会串行调用ChannelHandler来处理事件。
