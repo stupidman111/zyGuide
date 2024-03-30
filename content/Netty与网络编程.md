@@ -44,6 +44,7 @@
 
 ## 高性能网络模式---Reactor
 > 应用：Redis、Nginx、Netty
+> Reactor模式也称为Dispatcher模式。
 
 * I/O多路复用select、poll、epoll的使用方式是面向过程的方式；
 * 而Reactor是基于select、poll、epoll封装出的面向对象方式的网络模式；
