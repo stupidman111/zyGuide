@@ -140,6 +140,10 @@
 * 每个NioChannel只会绑定在唯一的NioEventLoop上；
 * 每个NioChannel都绑定一个自己的ChannelPipeline；
 * 每个ChannelPipeline中有一个链表形式的ChannelHandler
+* 可以使用pipeline.addLast()方法添加自定义的ChannelHandler到pipeline中；
+* 自定义ChannelHander类需要继承ChannelHandlerAdapter的子类，其中
+	* 继承ChannelOutboundHandlerAdapter更多的是用于处理写相关操作；
+	* 继承ChannelInboundHandlerAdapter更多的是用于处理读相关操作；
 
 ## Future机制
 > Netty的异步模型是基于 future 和 callback 的。
