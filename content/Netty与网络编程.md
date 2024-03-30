@@ -111,3 +111,4 @@
 
 ## Selector
 
+## NioSocketChannel初始化过程
