@@ -253,6 +253,8 @@
   },
   "active": "cd5c6b176e4b7c22",
   "lastOpenFiles": [
+    "img/Channel-Pipeline-Handler.png",
+    "img/ChannelHandler.png",
     "计网.md",
     "Tools.md",
     "Spring.md",
@@ -280,7 +282,6 @@
     "Kafka.md",
     "img/Java容器继承图.png",
     "img/Kafka模型.png",
-    "Go.md",
-    "img/Spring中各模块之间的依赖关系.png"
+    "Go.md"
   ]
 }

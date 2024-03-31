@@ -193,22 +193,49 @@ cf.addListener(new ChannelFuture() {
 ## Netty核心组件
 ### Bootstrap、ServerBootstrap
 
-### Future、ChannelFuture
+```java
+//常用方法
+group(workGroup);//Bootstrap
+group(bossGroup, workerGroup);//ServerBootgroup
+channel();//服务端使用NioServerSocketChannel.class，客户端使用NioSocketChannel.class
+option();//给ServerChannel添加配置，通常设置ChannelOption.SO_BACKLOG
+childOption();//给接收到的channel添加配置，通常设置ChannelOption.SO_KEEPALIVE
+childHandler();//用来设置业务处理类（向pileline中添加自定义的Hanlder）
+bind();//服务端绑定端口
+connect();//客户端用于连接服务端
+```
 
+### Future、ChannelFuture
+> 对于异步操作，我们调用后立即返回一个future / channelfuture，然后在返回的future上注册监听器。
 ### Channel
 
+```java
+NioSocketChannel//异步的客户端TCP socket连接
+NioServerSocketChannel//异步的服务器端TCP socket连接
+NioDatagramChannel//异步的UDP连接（UDP连接没有客户端、服务端的概念）
+NioSctpChannel//异步的客户端Sctp连接
+NioSctpSedrverChannel//异步的服务器端Sctp连接
+```
+
 ### Selector
+> Netty基于Selector实现 I/O 多路复用，通过Selector一个线程可以监听多个连接的Channel事件；
+> 当向一个Selector中注册Channel后，Selector就会不断轮询这些注册的Channel是否有已有序的I/O事件；
+> 在BossGroup中，Selector只轮询检查accept事件；
+> 在WorkerGroup中，Selector轮询检查read / write事件；
 
 ### ChannelHandler及其实现类
-
-。。。
+![](./img/ChannelHandler.png)
 #### 心跳机制的实现
+> 心跳机制可以往pipeline中添加一个`IdleStateHandler`来实现。
 
 ### Pipeline和ChannelPipeline
-
+![](./img/Channel-Pipeline-Handler.png)
 ### ChannelHandlerContext
 
 ### ChannelOption
 
 ### EventLoopGroup及其实现类NioEventLoopGroup
 
+### Unpooled类
+
+## 编码器、解码器
