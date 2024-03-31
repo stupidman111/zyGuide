@@ -68,4 +68,8 @@ public synchronized void start() {
 
 
 # Java线程的优先级
+> Java中为线程设置优先级只是我们提供给OS一个参考，具体是否优先级变得更高、更低完全由OS来掌握。
 
+* 设置优先级：`setPriority()`
+* 优先级范围：1~10
+* 
