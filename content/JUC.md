@@ -87,4 +87,49 @@ public final static int MAX_PRIORITY = 10;
 	* 当Java进程中不存在用户线程（非守护进程）了，则守护线程自动销毁；
 	* 典型的守护线程是垃圾回收线程（GC线程）；
 	* 守护线程（Daemon线程）的作用的是为其它线程提供服务，比如GC线程用于回收垃圾，以保证其他线程能够正常运行；
+	* 使用`.setDaemon(true)`将一个线程对象设置为守护线程；
+```java
+//MyThread，run方法每1秒打印一次i的值
+public class MyThread extends Thread {  
+    private int i = 0;  
+    @Override  
+    public void run() {  
+       try {  
+          while (true) {  
+             i++;  
+             System.out.println("i=" + (i));  
+             Thread.sleep(1000);  
+          }  
+       } catch (InterruptedException e) {  
+          e.printStackTrace();  
+       }  
+    }  
+}
+
+//设置myThread线程并设置其为守护线程--setDaemon(true)
+public class Run {  
+    public static void main(String[] args) {   
+       try {  
+          MyThread myThread = new MyThread();  
+          myThread.setDaemon(true);//设置myThread为守护线程  
+          myThread.start();  
+          Thread.sleep(5000);  
+          //在Main线程睡眠5s后，Main线程执行完销毁，由于此时没有其他非守护线程了，那么守护线程myThread就会自动销毁  
+       } catch (InterruptedException e) {  
+          e.printStackTrace();  
+       }  
+    }  
+}
+```
+
+# synchronized、volatile
+> 非线程安全：多个线程在对同一个对象中的实例变量进行并发访问时产生，结果就是会产生脏读（读取到的数据是被更改过的）
+> 线程安全：获取实例变量的值的动作是经过同步处理过的，不会出现
+
+## synchronized
+> synchronized可用来保证：原子性，可见性，有序性
+
+* 方法内的变量是线程安全的；
+* 实例变量是非线程安全的（多个线程可能操作同一个对象实例的实例变量）；
 * 
+## volatile
