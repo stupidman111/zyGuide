@@ -201,6 +201,9 @@ cf.addListener(new ChannelFuture() {
 
 ### ChannelHandler及其实现类
 
+。。。
+#### 心跳机制的实现
+
 ### Pipeline和ChannelPipeline
 
 ### ChannelHandlerContext
@@ -209,4 +212,3 @@ cf.addListener(new ChannelFuture() {
 
 ### EventLoopGroup及其实现类NioEventLoopGroup
 
-###
