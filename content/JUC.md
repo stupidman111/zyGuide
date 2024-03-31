@@ -131,5 +131,73 @@ public class Run {
 
 * 方法内的变量是线程安全的；
 * 实例变量是非线程安全的（多个线程可能操作同一个对象实例的实例变量）；
-* 
+* `synchronized修饰方法`是通过在方法的`flags`中加上标记`ACC_SYNCHRONIZED`来实现的，当调用synchronized方法时，调用指令会检查方法的`ACC_SYNCHRONIZED`访问标志是否设置了，若设置了，执行线程需要先持有同步锁，才能执行方法，在方法完成时要释放同步锁
+```java
+public class Main {  
+    synchronized public static void testMethod() {  
+  
+    }  
+  
+    public static void main(String[] args) {  
+       testMethod();  
+    }  
+}
+
+//使用javac Main.java编译成字节码Main.class
+//使用javap -c -v Main.class将class文件转换为字节码指令
+//其中，synchronized修饰的testMethod如下：
+ public static synchronized void testMethod();
+    descriptor: ()V
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_SYNCHRONIZED
+    Code:
+      stack=0, locals=0, args_size=0
+         0: return
+      LineNumberTable:
+        line 9: 0
+
+//其中可以发现testMethod下的flags中带有一个 ACC_SYNCHRONIZED 标志
+```
+* `synchronized修饰代码块`，是在代码块开头加一个`monitorenter`、两个`monitorexit`实现的；
+```java
+public class Main {  
+    public  void testMethod() {  
+       synchronized (this) {  
+          System.out.println("test");  
+       }  
+    }  
+  
+    public static void main(String[] args) {  
+       Main main = new Main();  
+       main.testMethod();  
+    }  
+}
+
+//使用javac Main.java编译成字节码Main.class
+//使用javap -c -v Main.class将class文件转换为字节码指令
+//其中，synchronized修饰的代码块如下：
+ public void testMethod();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: aload_0
+         1: dup
+         2: astore_1
+         3: monitorenter 
+         4: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         7: ldc           #3                  // String test
+         9: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        12: aload_1
+        13: monitorexit
+        14: goto          22
+        17: astore_2
+        18: aload_1
+        19: monitorexit
+        20: aload_2
+        21: athrow
+        22: return
+
+```
+
+
 ## volatile
