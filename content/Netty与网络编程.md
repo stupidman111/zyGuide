@@ -189,3 +189,24 @@ cf.addListener(new ChannelFuture() {
 
 
 ### 使用Netty搭建简单的Http服务
+
+## Netty核心组件
+### Bootstrap、ServerBootstrap
+
+### Future、ChannelFuture
+
+### Channel
+
+### Selector
+
+### ChannelHandler及其实现类
+
+### Pipeline和ChannelPipeline
+
+### ChannelHandlerContext
+
+### ChannelOption
+
+### EventLoopGroup及其实现类NioEventLoopGroup
+
+###
