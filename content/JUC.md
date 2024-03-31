@@ -71,5 +71,11 @@ public synchronized void start() {
 > Java中为线程设置优先级只是我们提供给OS一个参考，具体是否优先级变得更高、更低完全由OS来掌握。
 
 * 设置优先级：`setPriority()`
-* 优先级范围：1~10
+* 优先级范围：1~10（大于10或小于1会抛出`IllegalArgumentException`，Thread类为我们提供了`1, 5, 10`这三个取值的优先级，
+```java
+public final static int MIN_PRIORITY = 1;
+public final static int NORM_PRIORITY = 5;
+public final static int MAX_PRIORITY = 10;
+```
+* 线程的优先级具有继承性，例如，A线程启动B线程，则B线程的优先级与A线程是一样的。
 * 
