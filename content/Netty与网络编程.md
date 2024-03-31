@@ -127,7 +127,7 @@
 5. NiotEventLoopGroup可以包含多个线程，即可以包含多个NioEventLoop；
 6. 每个Boss Group中的NioEventLoop循环执行的步骤有3步：
 	1. 轮询accept事件；
-	2. 处理accept事件，与client建立连接，生成 NioSocketChannel，并将其注册到Work Group中的某个NioEventLoop上的Selector；
+	2. 处理accept事件，与client建立连接，生成 NioSocketChannel，并将其注册到Worker Group中的某个NioEventLoop上的Selector；
 	3. 处理任务队列的任务，runAllTasks（在Boss Group这里就是处理一次select调用返回的所有连接事件的任务）；
 7. 每个Work Group中的NioEventLoop循环执行的步骤有3步：
 	1. 轮询read / write事件；
