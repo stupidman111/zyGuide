@@ -118,7 +118,7 @@
 > Netty主要基于主从Reactor（多Reactor）多线程模型。
 
 
-![](./img/Netty工作原理图.png)
+![](Netty工作原理图.png)
 
 1. Netty抽象出两组“线程池”，Boss Group专门负责接收客户端的连接，Worker Group负责网络的读/写；
 2. Boss Group和Worker Group的类型都是 NioEventLoopGroup；
@@ -224,12 +224,12 @@ NioSctpSedrverChannel//异步的服务器端Sctp连接
 > 在WorkerGroup中，Selector轮询检查read / write事件；
 
 ### ChannelHandler及其实现类
-![](./img/ChannelHandler.png)
+![](ChannelHandler.png)
 #### 心跳机制的实现
 > 心跳机制可以往pipeline中添加一个`IdleStateHandler`来实现。
 
 ### Pipeline和ChannelPipeline
-![](./img/Channel-Pipeline-Handler.png)
+![](Channel-Pipeline-Handler.png)
 ### ChannelHandlerContext
 
 ### ChannelOption
