@@ -61,7 +61,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Netty与网络编程.md",
+                "file": "Tools.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0ec90fc2dec68519",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "工具依赖.md",
                 "mode": "source",
                 "source": false
               }
@@ -116,7 +128,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -182,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Netty与网络编程.md",
+                "file": "工具依赖.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -199,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Netty与网络编程.md",
+                "file": "工具依赖.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -222,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Netty与网络编程.md"
+                "file": "工具依赖.md"
               }
             }
           },
@@ -251,15 +263,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "cd5c6b176e4b7c22",
+  "active": "0ec90fc2dec68519",
   "lastOpenFiles": [
+    "Tools.md",
+    "工具依赖.md",
+    "Netty与网络编程.md",
     "MySQL.md",
     "JUC.md",
-    "Netty与网络编程.md",
     "img/Channel-Pipeline-Handler.png",
     "img/ChannelHandler.png",
     "计网.md",
-    "Tools.md",
     "Spring.md",
     "Redis.md",
     "OS.md",
