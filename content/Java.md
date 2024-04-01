@@ -23,6 +23,18 @@
 	* 两个对象的hashCode相等，且两个对象的equals返回true，那么认为这两个对象相等；
 	* 两个对象的hashCode不相等，那么可以直接认为这两个对象不相等；
 
+
+## System.identityHashCode()
+> identityHashCode和hashCode的区别是，identityHashCode会返回对象的hashCode，而不管对象是否重写了hashCode方法。
+
+* 对象重写了hashCode：
+	* `obj.hashCode()`返回重写后计算的值；
+	* `System.identityHashCode(obj)`返回原hashCode值（每个对象唯一的）；
+* 对象没有重写hashCode：
+	* `hashCode`与`identityHashCode`返回值相同；
+```java
+
+```
 ## String、StringBuilder、StringBuffer
 - String为什么不可变：
 	- 什么是不可变：当给String赋一个字符串字面值时，改变的是String引用所指向的地址，而不是String原指向字符串的值--这里有一个字符串常量池的概念；
