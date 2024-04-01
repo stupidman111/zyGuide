@@ -92,7 +92,7 @@ func main() {
 > 同一个包中`init`按照 `导入包的init -> 本包的init执行（若有多个则按顺序）`
 > Go中函数可以返回多个值。
 
-![](./img/Go-执行顺序.png)
+![](Go-执行顺序.png)
 
 ```go
 package main  
