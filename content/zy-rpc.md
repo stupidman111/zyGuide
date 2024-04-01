@@ -30,3 +30,14 @@
 ```java
 Map.Entry<Long, Invoker<T>> entry = virtualInvokers.ceilingEntry(hash);
 ```
+
+## 服务发现、服务注册
+* 服务发现：
+	* 根据RPC请求消息，取出服务名称，在zkClient中寻找该服务下挂的所有子节点；
+	* 这些子节点都是属于该服务的节点，将这些子节点组成的List以及RPC请求作为调用负载均衡的参数；
+	* 负载算法选出一个节点，并将地址返回给客户端；
+* 服务注册：
+	* 根据服务名以及节点地址，在zkClient中注册持久性节点信息；
+
+## 序列化
+
