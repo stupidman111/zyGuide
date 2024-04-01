@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "必会技术/线程池.md",
+                "file": "读书笔记/深入理解Java虚拟机.md",
                 "mode": "source",
                 "source": false
               }
@@ -206,7 +206,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "必会技术/线程池.md",
+                "file": "读书笔记/深入理解Java虚拟机.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -223,7 +223,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "必会技术/线程池.md",
+                "file": "读书笔记/深入理解Java虚拟机.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -246,7 +246,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "必会技术/线程池.md"
+                "file": "读书笔记/深入理解Java虚拟机.md"
               }
             }
           },
@@ -277,8 +277,14 @@
   },
   "active": "a148d19235699501",
   "lastOpenFiles": [
-    "必会技术/工具依赖.md",
+    "必会技术/设计模式.md",
+    "读书笔记/深入理解Java虚拟机.md",
+    "读书笔记",
+    "八股文/Java.md",
+    "八股文/JUC.md",
+    "八股文/MySQL.md",
     "必会技术/线程池.md",
+    "必会技术/工具依赖.md",
     "必会技术/Kafka.md",
     "必会技术/Netty与网络编程.md",
     "index.md",
@@ -288,18 +294,15 @@
     "我的面试/面筋.md",
     "八股文/OS与Linux.md",
     "八股文/OS.md",
-    "八股文/JUC.md",
     "八股文",
     "我的面试",
     "我的面试/Java常用API.md",
     "必会技术/Spring实战.md",
     "必会技术/Redis实战.md",
     "八股文/Redis.md",
-    "八股文/Java.md",
     "其他语言/C++.md",
     "我的面试/zy-rpc.md",
     "必会技术",
-    "八股文/MySQL.md",
     "img/Channel-Pipeline-Handler.png",
     "img/ChannelHandler.png",
     "八股文/计网.md",
