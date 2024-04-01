@@ -111,7 +111,7 @@
               "state": {
                 "file": "index.md",
                 "mode": "source",
-                "source": false
+                "source": true
               }
             }
           },
@@ -259,7 +259,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -277,6 +277,9 @@
   },
   "active": "a148d19235699501",
   "lastOpenFiles": [
+    "必会技术/Kafka.md",
+    "必会技术/MQ.md",
+    "index.md",
     "我的面试/我不会的面试题.md",
     "其他语言",
     "我的面试/面筋.md",
@@ -289,11 +292,8 @@
     "必会技术/Spring实战.md",
     "必会技术/Redis实战.md",
     "八股文/Redis.md",
-    "必会技术/Kafka.md",
-    "必会技术/MQ.md",
     "必会技术/Netty与网络编程.md",
     "八股文/Java.md",
-    "index.md",
     "其他语言/C++.md",
     "必会技术/线程池.md",
     "必会技术/工具依赖.md",
