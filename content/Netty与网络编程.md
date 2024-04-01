@@ -239,3 +239,9 @@ NioSctpSedrverChannel//异步的服务器端Sctp连接
 ### Unpooled类
 
 ## 编码器、解码器
+
+## TCP粘包、拆包问题
+
+## 自定义协议+编、解码器解决TCP粘包、拆包
+
+
