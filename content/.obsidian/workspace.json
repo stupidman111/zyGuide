@@ -97,19 +97,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "我的面试/面筋.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "a148d19235699501",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "读书笔记/深入理解Java虚拟机.md",
+                "file": "八股文/JUC.md",
                 "mode": "source",
                 "source": false
               }
@@ -140,7 +128,7 @@
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -206,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "读书笔记/深入理解Java虚拟机.md",
+                "file": "八股文/JUC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -223,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "读书笔记/深入理解Java虚拟机.md",
+                "file": "八股文/JUC.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -246,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "读书笔记/深入理解Java虚拟机.md"
+                "file": "八股文/JUC.md"
               }
             }
           },
@@ -259,7 +247,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -275,10 +263,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a148d19235699501",
+  "active": "039531bb9eddfac0",
   "lastOpenFiles": [
-    "必会技术/设计模式.md",
     "读书笔记/深入理解Java虚拟机.md",
+    "必会技术/设计模式.md",
     "读书笔记",
     "八股文/Java.md",
     "八股文/JUC.md",
