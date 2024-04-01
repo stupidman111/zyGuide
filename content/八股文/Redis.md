@@ -125,7 +125,7 @@
 		* 释放内存任务
 	* 在6.0版本后Redis还引入了多个线程用于处理网络I/O，但执行命令仍然是单线程的
 * Redis线程模型
-	![](./img/redis单线程模型.png)
+	![](redis单线程模型.png)
 	1. 调用`epoll_create()` 创建epoll对象，调用`socket()` 创建服务端socket；
 	2. 调用`bind()、listen()` 绑定地址、开启监听；
 	3. 调用`epoll_ctl()`将`listen sockert` 加入到epoll，并注册 连接事件处理函数；

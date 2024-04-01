@@ -96,9 +96,9 @@ class Main {
 
 
 # Java集合
-![](./img/Java容器继承图.png)
+![](Java容器继承图.png)
 可省略为：
-![](./img/Java主要集合框架.png)
+![](Java主要集合框架.png)
 
 ## Collection接口
 > 三大子接口：Set、List、Queue
@@ -178,7 +178,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 	* `Node节点`：
 	* `TreeNode节点`：
 
-![](./img/HashMap底层结构.png)
+![](HashMap底层结构.png)
 * **桶数组是用来存储数据元素的，链表是用来解决哈希冲突的，红黑树是为了提高查询的效率**；
 * 数据元素通过映射关系（扰动函数获取hash值，再对(length-1)做`&`运算），映射到桶数组对应索引的位置；
 * 若发生冲突（不相等的两个元素被映射到同一个位置/元素被映射到的位置已经存在元素了），从冲突的位置拉一个链表，插入冲突的元素；
@@ -186,7 +186,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 * 若红黑树节点个数小于6，红黑树转化为链表；
 ### 红黑树的概念
 > 本质上是一种保持平衡的二叉查找树（搜索树）。
-![](./img/红黑树.png)
+![](红黑树.png)
 * 红黑树的基本规则：
 	* 只有红黑两种节点；
 	* 根节点永远是黑色；
@@ -218,7 +218,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
 # JUC
 ## 线程死锁
-[[Linux#死锁]]
+[[OS与Linux#死锁]]
 
 ## synchronized锁升级原理
 > synchronized锁升级原理涉及Java对象内存布局、JVM指针压缩。
@@ -242,7 +242,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 > 12字节或16字节，以下默认为开启了指针压缩。若没有开启指针压缩，那么类型指针变为8字节。
 ##### Markword（8字节）
 > 占64bit，存储对象的hashCode、GC年龄、锁状态
-![](./img/对象结构-对象头-Markword.png)
+![](对象结构-对象头-Markword.png)
 
 ##### 类型指针（4字节）
 > 为什么类型指针是4字节？压缩指针的情况下只有32位，其他3位0隐藏。
@@ -263,7 +263,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 3. 代码块，括号内 类class/对象实例
 #### 原理分析
 > 会使用到对象结构中对象头中的8字节的Markword信息。
-![](./img/对象结构-对象头-Markword.png)
+![](对象结构-对象头-Markword.png)
 #### 锁状态
 > 无锁、偏向锁、轻量级锁、重量级锁。
 

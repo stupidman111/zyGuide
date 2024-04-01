@@ -1,7 +1,7 @@
 # Spring框架及其子模块
 > Spring中各个模块的依赖关系如下，注意：**当我们导入任意一个模块时，他所依赖的模块都会被导入**，比如我们只导入`spring-context`，那么它所依赖的`spring-core、spring-context、spring-beans、spring-expression`都会被导入。
 
-![](./img/Spring中各模块之间的依赖关系.png)
+![](Spring中各模块之间的依赖关系.png)
 
 ## Core Container
 > Spring 框架的核心模块，也可以说是基础模块，主要提供 IoC 依赖注入功能的支持。Spring 其他所有的功能基本都需要依赖于该模块。
@@ -227,7 +227,7 @@ a.setB(b);
 b.setA(a);
 ```
 实际上就如下图这样：
-![](./img/getter:setter循环依赖解决.png)
+![](getter:setter循环依赖解决.png)
 > 循环依赖的对象，如果无法做到先实例化，后设置依赖（属性），那么这种循环对象是无法解决的；
 
 ```java
@@ -586,7 +586,7 @@ public @interface Transactional {
 * ViewResolver：视图解析器，DispatcheServlet 通过它将逻辑视图解析为物理视图，最终将渲染结果响应给客户端。
 
 ## 工作流程
-![](./img/SpringMVC工作原理.png)
+![](SpringMVC工作原理.png)
 DispatchServlet -> HandlerMapping -> HandlerExecutionChain(HandlerInterceptor&Handler) -> HandlerAdapter -> ModelAndView -> ViewSolver -> DispatchServlet
 在前后端分离的情况下，Handler执行完会直接返回JSON数据，返回的ModelAndView为null
 
