@@ -92,6 +92,12 @@ Map.Entry<Long, Invoker<T>> entry = virtualInvokers.ceilingEntry(hash);
 
 > 在服务端的bootStrap中使用`.childHanlder()`方法，向服务端Channel的pipeline中添加一个`IdleStateHandler`，并设置允许其读空闲为30s，即30s内若没有从客户端读取，那么就会触发读空闲事件，具体地，在自定义的Handler里面，重写的`userEventTriggered()`方法中，判断event是否为空闲状态`IdleStateEvent`并为读空闲`READER_IDLE`，若是，就关闭连接；
 
+
 ## Spring自定义注解完成服务注册
 
 
+## 获取结果是同步还是异步的
+>⽬前是异步的，我使⽤了CompletableFuture对象来包装RpcResponse,然后将他存⼊⼀个名为
+>unprocessedRequests的map⾥，该map以请求ID作为key，对应的CompletableFuture作为value，⼀开始future⾥并没有内容，在客户端Handler的channelRead⽅法中，判断出是rpcResponse消息，才使⽤complete⽅法，将CompletableFuture的结果设置为这个Response。
+
+> CompletableFuture类中的complete方法用于手动完成Future，并设置其结果值。调用complete方法将Future标记为已完成状态，并将结果值设置为指定的值。这个方法允许你在异步操作完成之前手动设置结果，而不必等待操作完成。
