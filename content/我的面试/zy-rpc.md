@@ -1,6 +1,11 @@
 ## 简单介绍Netty
 
+* Netty是一个基于NIO的client-server客户端服务器框架，能够快速简单地开发网络应用程序；
+* 极大地简化并优化了TCP和UDP网络套接字编程，且性能、安全性在某些方面可能会更好；
+* 支持多种协议，如FTP、SMTP、HTTP以及各种二进制和基于文本的传输协议；
 
+* 封装NIO的很多细节，使用更简单；
+* 预置了多种编解码功能，支持多种主流协议；
 ## Netty中的重要组件
 ## 线程池
 > 在基于Socket方式的RPC中，底层使用了自己配置的线程池；
@@ -48,6 +53,13 @@ Map.Entry<Long, Invoker<T>> entry = virtualInvokers.ceilingEntry(hash);
 
 * 序列化：传入对象即可；序列化返回一个字节数组；
 * 反序列化，传入序列化得到的字节数组、传入要将字节数组反序列化得到的类型Class；反序列化返回一个所需要类型的对象；
+
+## 自定义编解码
+> 自定义编码-->`RpcMessageEncoder`：
+
+
+
+> 自定义解码-->`RpcMessageDecoder`：
 
 ## 自定义通信协议
 
