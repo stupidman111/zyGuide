@@ -7,6 +7,18 @@
 * 封装NIO的很多细节，使用更简单；
 * 预置了多种编解码功能，支持多种主流协议；
 ## Netty中的重要组件
+* 首先，`ServerBootstrap`和`Bootstrap`分别对应服务端与客户端，属于启动引导类；
+* 在服务端会创建两个`NioEventLoopGroup`-事件循环组，一个称之为`bossGroup`，一个称之为`workerGroup`，`bossGroup`只负责关注`Accept`连接事件，当事件发生时，就建立连接，然后将连接交给`workerGroup`来处理，`workGroup`只负责关注`Read/Write`事件，当事件发生时，就对数据进行处理；
+* 每个`NioEventLoopGroup`-事件循环组中包含多个`NioEventLoop`，负责监听网络事件并调用事件处理器进行相关I/O操作的处理；
+* 每个`NioEventLoop`都有一个`Channel`，是Netty的网络操作抽象类，包括基本的I/O操作，如bind、connect、read、write等；
+* 每个`Channel`都有一个`ChannelPipeline`；
+* 每个`ChannelPipeline`负责维护一个由多个`ChannelHandler`构成的双向链表，用户可以自定义`ChannelHandler`添加到`ChannelPipeline`中；
+* `ChannelFuture`是一个异步返回结果对象，在Netty中，所有I/O操作都是异步的，我们在调用方法后立即返回一个`ChannelFuture`对象，可以在这个`ChannelFuture`对象上通过`addListener()`方法注册一个`ChannelFutureListener`监听器，当操作执行成功或者失败后，监听器会自动触发并执行相应逻辑操作返回结果。
+
+## 为什么用RPC不用HTTP，为什么基于TCP不基于HTTP
+* 在传输效率上，HTTP请求中由于有很多我们用不到的字段，开销较大，所以我们使用TCP，将RPC消息转换为自定义的传输协议后放入到TCP的数据部分，使得报文体积更小；
+* 在性能消耗上，进行序列化反序列化操作时，HTTP中数据一般是JSON形式的，效率更低，而TCP是基于字节流方式的，效率比较高。
+
 ## 线程池
 > 在基于Socket方式的RPC中，底层使用了自己配置的线程池；
 > [美团线程池实现](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)
@@ -73,9 +85,6 @@ Map.Entry<Long, Invoker<T>> entry = virtualInvokers.ceilingEntry(hash);
 
 
 > 自定义解码-->`RpcMessageDecoder`：根据`ByteBuf`中的内容以及自定义通信协议，封装一个RPC消息对象即可；
-
-
-
 
 ## 心跳机制
 > 在客户端的bootStrap中使用`.handler()`方法，向客户端Channel的pipeline中添加一个`IdleStateHandler`，并设置允许其写空闲为5s，即5s内若接收到客户端的数据，那么就触发写空闲事件，具体地，在自定义的Handler里面，重写的`userEventTriggered()`方法中，判断event是否为空闲状态`IdleStateEvent`并为写空闲`WRITE_IDLE`，若是，就发送一个包含PING的心跳RPC消息（服务端会根据接收到的消息是否是心跳消息来回应一个包含PONG的心跳RPC响应消息）
