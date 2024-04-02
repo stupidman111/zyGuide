@@ -41,4 +41,6 @@ Map.Entry<Long, Invoker<T>> entry = virtualInvokers.ceilingEntry(hash);
 	* 根据服务名以及节点地址，在zkClient中注册持久性节点信息；
 
 ## 序列化
+> Kryo是非线程安全的，可以考虑使用ThreadLocal来存储Kryo对象。
+
 
