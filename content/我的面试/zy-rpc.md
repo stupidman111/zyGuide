@@ -87,7 +87,7 @@ Map.Entry<Long, Invoker<T>> entry = virtualInvokers.ceilingEntry(hash);
 > 自定义解码-->`RpcMessageDecoder`：根据`ByteBuf`中的内容以及自定义通信协议，封装一个RPC消息对象即可；
 
 ## 心跳机制
-> 在客户端的bootStrap中使用`.handler()`方法，向客户端Channel的pipeline中添加一个`IdleStateHandler`，并设置允许其写空闲为5s，即5s内若接收到客户端的数据，那么就触发写空闲事件，具体地，在自定义的Handler里面，重写的`userEventTriggered()`方法中，判断event是否为空闲状态`IdleStateEvent`并为写空闲`WRITE_IDLE`，若是，就发送一个包含PING的心跳RPC消息（服务端Handler会根据接收到的消息是否是心跳消息来回应一个包含PONG的心跳RPC响应消息）
+> 在客户端的bootStrap中使用`.handler()`方法，向客户端Channel的pipeline中添加一个`IdleStateHandler`，并设置允许其写空闲为5s，即5s内若没有接收到服务端的数据，那么就触发写空闲事件，具体地，在自定义的Handler里面，重写的`userEventTriggered()`方法中，判断event是否为空闲状态`IdleStateEvent`并为写空闲`WRITE_IDLE`，若是，就发送一个包含PING的心跳RPC消息（服务端Handler会根据接收到的消息是否是心跳消息来回应一个包含PONG的心跳RPC响应消息）
 
 
 > 在服务端的bootStrap中使用`.childHanlder()`方法，向服务端Channel的pipeline中添加一个`IdleStateHandler`，并设置允许其读空闲为30s，即30s内若没有从客户端读取，那么就会触发读空闲事件，具体地，在自定义的Handler里面，重写的`userEventTriggered()`方法中，判断event是否为空闲状态`IdleStateEvent`并为读空闲`READER_IDLE`，若是，就关闭连接；
