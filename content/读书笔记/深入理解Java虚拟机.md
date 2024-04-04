@@ -140,4 +140,55 @@
 * 并发的可达性分析
 
 ## 垃圾回收器
+> ...
+
+* Serial 垃圾回收器：
+	* Serial垃圾回收器是一种单线程工作的垃圾回收器（这里的单线程主要是强调它工作时有一段STW时间以暂停其他工作线程的执行）
+	* Serial一般用于新生代垃圾回收
+	* Serial可以与CMS搭配使用：
+		* 新生代使用Serial进行单线程执行标记-复制算法的垃圾回收；
+		* 老年代使用CMS进行........
+* Serial Old 垃圾回收器：
+	* Seria Old垃圾回收器是Serial垃圾回收器的老年代版本
+	* 同样是一种单线程垃圾回收器；
+	* Serial 与 Serial Old通常搭配使用，
+		* Serial负责在新生代采用`标记-复制`算法进行垃圾回收，
+		* Serial Old负责在老年代采用`标记-整理`算法进行垃圾回收；
+
+
+* ParNew 垃圾回收器：
+	* ParNew是Serial的多线程并行版本；
+	* ParNew一般用于新生代垃圾回收
+	* 在单核心环境下，ParNew绝对不会比Serial有更好的效果，因为ParNew多线程需要切换开销；
+	* ParNew可以与Serial Old进行组合：
+		* 新生代使用ParNew进行多线程并行执行标记-复制算法的垃圾回收；
+		* 老年代使用Serial Old进行单线程执行标记-整理算法的垃圾回收；
+	* ParNew可以与CMS进行组合：
+		* 新生代使用ParNew进行多线程并行执行标记-复制算法的垃圾回收；
+		* 老年代使用CMS进行...
+
+
+
+* Parallel Scavenge 垃圾回收器
+	* Parallel Scavenge是一种多线程并行手机的基于标记-复制算法的垃圾回收器；
+	* Parallel Scavenge的关注点在于达到一个可控制的吞吐量；所谓吞吐量是处理器用于执行用户代码的实现与处理器整体消耗时间的比值；通常情况下，吞吐量越高，执行效率越高；
+	* Parallel Scavenge提供了用于控制最大垃圾回收暂停时间STW的参数--`-XX:MaxGCPauseMillis`；
+	* Parallel Scavenge提供了用于直接设置吞吐量大小的参数--`-XX:GCTimeRatio`；
+	* 
+
+* Parallel Old 垃圾回收器
+* CMS 垃圾回收器
+* Garbage First 垃圾回收器（G1）
+
+## 低延迟垃圾收集器
+> ...
+
+* Shenandoah 垃圾回收器
+* ZGC 垃圾回收器
+
+
+## 内存分配与回收策略
+
+
+
 
