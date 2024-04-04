@@ -154,6 +154,7 @@
 	* Serial 与 Serial Old通常搭配使用，
 		* Serial负责在新生代采用`标记-复制`算法进行垃圾回收，
 		* Serial Old负责在老年代采用`标记-整理`算法进行垃圾回收；
+	* Serial Old还可以作为CMS收集器发生失败时的后备收集器；
 
 
 * ParNew 垃圾回收器：
@@ -169,15 +170,18 @@
 
 
 
-* Parallel Scavenge 垃圾回收器
-	* Parallel Scavenge是一种多线程并行手机的基于标记-复制算法的垃圾回收器；
+* Parallel Scavenge 垃圾回收器---吞吐量优先收集器
+	* Parallel Scavenge是一种多线程并行收集的基于标记-复制算法的垃圾回收器；
 	* Parallel Scavenge的关注点在于达到一个可控制的吞吐量；所谓吞吐量是处理器用于执行用户代码的实现与处理器整体消耗时间的比值；通常情况下，吞吐量越高，执行效率越高；
 	* Parallel Scavenge提供了用于控制最大垃圾回收暂停时间STW的参数--`-XX:MaxGCPauseMillis`；
 	* Parallel Scavenge提供了用于直接设置吞吐量大小的参数--`-XX:GCTimeRatio`；
-	* 
 
-* Parallel Old 垃圾回收器
-* CMS 垃圾回收器
+
+* Parallel Old 垃圾回收器：
+	* Parallel Old是Parallel Scavenge的老年代版本，一种多线程并行收集的基于标记-整理算法的垃圾回收器；
+
+* CMS 垃圾回收器：
+	* 
 * Garbage First 垃圾回收器（G1）
 
 ## 低延迟垃圾收集器
