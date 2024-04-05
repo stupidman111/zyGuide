@@ -368,8 +368,70 @@
 
 ## 类加载器
 
+* 对于任何一个类，都必须由加载它的类加载器和这个类本身一起共同确定其在Java虚拟机中的唯一性，每一个类加载器都有一个独立的类名称空间；
 
+* 类加载器：
+	* 分类两类：
+		* 启动类加载器：虚拟机的一部分，C++实现；
+		* 其他所有的类加载器：Java语言实现，独立于虚拟机，都继承自java.lang.ClassLoader；
+	* 三层类加载器：
+		* `Bootstrap ClassLoader`--启动类加载器：
+			* 负责加载存放在`<JAVA_HOME>\lib`目录 或 被`-Xbootclasspath`参数指定的目录中存放的类，如`rt.jar、tools.jar`；
+		* `Extension ClassLoader`--扩展类加载器：
+			* 负责加载存放在`<JAVA_HOME>\lib\ext`目录 或 ... 的类；
+		* `Application ClassLoader`--应用程序类加载器：
+			* 负责加载用户类路径`classpath`下的类；
 
+## 双亲委派模型
 
+* 双亲委派模型要求，除了最顶层的类加载器以外，其余的类都必须拥有自己的父类加载器；
+* 工作流程：
+	* 如果一个类加载器收到了加载一个类的请求，它首先不会自己尝试加载这个类，而是将这个请求委派给自己的父类加载器，每一个层次的类加载器都是向自己的父类委派，因此所有的类加载请求最终都应该传送到最顶层的启动类加载器中，只有当父类加载器无法完成这个加载请求时（父类的类加载路径中找不到要加载的类），子类加载器才会去尝试加载这个类；
+```java
+protected Class<?> loadClass(String name, boolean resolve)  
+    throws ClassNotFoundException  
+{  
+    synchronized (getClassLoadingLock(name)) {  
+        // First, check if the class has already been loaded  
+        Class<?> c = findLoadedClass(name);  
+        if (c == null) {  
+            long t0 = System.nanoTime();  
+            try {  
+                if (parent != null) {  
+                    c = parent.loadClass(name, false);  
+                } else {  
+                    c = findBootstrapClassOrNull(name);  
+                }  
+            } catch (ClassNotFoundException e) {  
+                // ClassNotFoundException thrown if class not found  
+                // from the non-null parent class loader            }  
+  
+            if (c == null) {  
+                // If still not found, then invoke findClass in order  
+                // to find the class.                long t1 = System.nanoTime();  
+                c = findClass(name);  
+  
+                // this is the defining class loader; record the stats  
+                sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0);  
+                sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);  
+                sun.misc.PerfCounter.getFindClasses().increment();  
+            }  
+        }  
+        if (resolve) {  
+            resolveClass(c);  
+        }  
+        return c;  
+    }  
+}
+```
+> 这段代码实现了双亲委派机制：
+* 首先检查这个类是否被加载过了；
+* 若没有被加载过就委托给父类去加载，是一段递归代码，依次向上委托---`parent.loadClass()`
+* 若父类不存在，则交给启动类加载器尝试加载；
+* 在父类加载器无法加载时，才会自己调用`findClass()`来加载；
 
-
+## 破坏双亲委派机制
+> 前面我们知道，双亲委派机制时通过`loadCLass()`方法实现的，而加载类是通过`findClass`方法来实现的；
+* 因此，我们可以自定义类加载器：
+	* 设置类加载路径--重写`findClass`方法；
+	* 打破双亲委派机制--重写`loadClass`方法；
