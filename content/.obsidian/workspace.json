@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股文/计网.md",
+                "file": "读书笔记/深入理解Java虚拟机.md",
                 "mode": "source",
                 "source": false
               }
@@ -178,8 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -195,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "八股文/计网.md",
+                "file": "读书笔记/深入理解Java虚拟机.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -212,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "八股文/计网.md",
+                "file": "读书笔记/深入理解Java虚拟机.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -235,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股文/计网.md"
+                "file": "读书笔记/深入理解Java虚拟机.md"
               }
             }
           },
@@ -266,11 +265,11 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
+    "八股文/计网.md",
     "img/TCP四次挥手状态图.png",
     "img/TCP三次握手状态图.png",
     "img/UDP报文格式.png",
     "UDP头格式.md",
-    "八股文/计网.md",
     "img/TCP报文格式.png",
     "读书笔记/计算机网络-自顶向下方法.md",
     "读书笔记/未命名",
@@ -307,7 +306,6 @@
     "img/Netty工作原理图.png",
     "多线程",
     "img/对象结构-对象头-Markword.png",
-    "img/SpringMVC工作原理.png",
-    "img/getter:setter循环依赖解决.png"
+    "img/SpringMVC工作原理.png"
   ]
 }
