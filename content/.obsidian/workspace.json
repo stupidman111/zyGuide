@@ -266,6 +266,7 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
+    "img/TCP四次挥手状态图.png",
     "img/TCP三次握手状态图.png",
     "img/UDP报文格式.png",
     "UDP头格式.md",
@@ -307,7 +308,6 @@
     "多线程",
     "img/对象结构-对象头-Markword.png",
     "img/SpringMVC工作原理.png",
-    "img/getter:setter循环依赖解决.png",
-    "img/红黑树.png"
+    "img/getter:setter循环依赖解决.png"
   ]
 }
