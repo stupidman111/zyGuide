@@ -434,4 +434,4 @@ protected Class<?> loadClass(String name, boolean resolve)
 > 前面我们知道，双亲委派机制时通过`loadCLass()`方法实现的，而加载类是通过`findClass`方法来实现的；
 * 因此，我们可以自定义类加载器：
 	* 设置类加载路径--重写`findClass`方法；
-	* 打破双亲委派机制--重写`loadClass`方法；
+	* 打破双亲委派机制--重写`loadClass`方法；0
