@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "八股文/OS与Linux.md",
+                "file": "读书笔记/Java并发编程的艺术.md",
                 "mode": "source",
                 "source": false
               }
@@ -178,8 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -195,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "八股文/OS与Linux.md",
+                "file": "读书笔记/Java并发编程的艺术.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -212,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "八股文/OS与Linux.md",
+                "file": "读书笔记/Java并发编程的艺术.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -235,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股文/OS与Linux.md"
+                "file": "读书笔记/Java并发编程的艺术.md"
               }
             }
           },
@@ -267,6 +266,7 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
+    "八股文/OS与Linux.md",
     "我的面试/面试题.md",
     "八股文/计网.md",
     "必会技术/Kafka.md",
@@ -290,7 +290,6 @@
     "我的面试/zy-rpc.md",
     "img/Linux网络协议栈.png",
     "八股文/Spring.md",
-    "八股文/OS与Linux.md",
     "八股文/MySQL.md",
     "必会技术/Netty与网络编程.md",
     "读书笔记/111.md",
