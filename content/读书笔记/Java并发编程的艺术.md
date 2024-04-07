@@ -25,7 +25,16 @@
 * `volatile`：
 	* 轻量级的`synchronized`；
 	* 保证`共享变量的可见性`，可见性：当一个线程修改一个共享变量时，其他线程能够读到这个修改的值；
-	* volatile修饰的共享变量进行写操作时，汇编代码会多出一条含有`lock前缀`指令的代码，`lock前缀`指向在多核处理器下会发生：
+	* 原理：volatile修饰的共享变量进行写操作时，汇编代码会多出一条含有`lock前缀`指令的代码，`lock前缀`指向在多核处理器下会发生：
 		* 将当前处理器核心的Cache行数据写回到内存中；
 		* 通知其他核心，若Cache中含有对应内存地址的数据则失效；
+	* ...
+* `synchronized`：
+	* synchronized实现同步的基础是Java中每一个对象都可以作为锁，具体表现为：
+		* synchronized作用于普通同步方法，锁的是当前实例对象；
+		* synchronized作用于静态同步方法，锁的是当前类的Class对象；
+		* synchronized作用于同步代码块，锁的是括号内配置的对象；
+	* synchronized的实现原理是JVM基于进入、退出`Monitor`对象来实现方法同步和代码块同步：
+		* 代码块同步使用`monitorenter`、`monitorexit`指令来实现，执行`moniterenter`即尝试获取对象对应的`Monitor`的所有权，即尝试获取对象的锁；
+		* 方法同步使用
 	* 
