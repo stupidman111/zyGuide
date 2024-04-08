@@ -22,6 +22,7 @@
 # 第二章 Java并发机制的底层实现原理
 > volatile与synchronized
 
+## volatile
 * `volatile`：
 	* 轻量级的`synchronized`；
 	* 保证`共享变量的可见性`，可见性：当一个线程修改一个共享变量时，其他线程能够读到这个修改的值；
@@ -29,6 +30,8 @@
 		* 将当前处理器核心的Cache行数据写回到内存中；
 		* 通知其他核心，若Cache中含有对应内存地址的数据则失效；
 	* ...
+
+## synchronized
 * `synchronized`：
 	* synchronized实现同步的基础是Java中每一个对象都可以作为锁，具体表现为：
 		* synchronized作用于普通同步方法，锁的是当前实例对象；
@@ -51,3 +54,46 @@
 | 偏向锁  | 加锁、解锁不需要额外的消耗；<br>相比执行非同步方法只存在纳秒级的差距 | 如果线程间存在锁竞争，会带来额外的锁撤销的消耗； | 适用于只有一个线程访问同步块的场景；   |
 | 轻量级锁 | 线程的竞争不会阻塞，提高了程序的响应速度                 | 线程需要自旋等待锁，而自旋会消耗CPU      | 追求响应时间，同步块执行时间非常快的场景 |
 | 重量级锁 | 线程竞争不使用自旋，不消耗CPU                     | 获取不到锁的线程将会阻塞，响应速度慢；      | 追求吞吐量，同步块执行时间较长的场景   |
+## 原子操作实现原理
+> 原子操作：不可被中断的一个或一系列操作。
+
+* `CAS`：CAS操作需要输入两个数值，一个旧值（期望操作前的值）和一个新值，在操作期间先比较旧值有没有发送变化，如果没有发生变化，才替换为新值，发送了变化则不替换；
+* Java实现原子操作：
+	* 使用循环CAS实现原子操作：
+		* Java中CAS操作使用处理器提供的`CMPXCHG`指令来实现；
+		* 自旋CAS操作即循环进行CAS操作直到成功为止；
+		* java.util.concurrent包中提供了一系列类来支持原子操作，如`AtomicInteger`、`AtomicLong`、`AtomicBoolean`、`AtomicReference`等，这些类都包含`compareAndSet`方法；
+		* `CAS`实现原子操作的三大问题：
+			* `ABA`问题：
+				* 即CAS在操作值时，需要检查值有没有发生变化，若值从原来的A变成了B，最后在检查前又变成了A，这样CAS会判断该值没有发生变化，但实际上这个值发生了变化；
+				* 解决：追加一个版本号，每修改一次值都将版本号+1，这样在检查时除了要判断值是否变化外还需要判断版本号是否变化；
+				* Java中提供了`AtomicStampedReference`类以解决ABA问题：通过引用来比较值，并设置时间戳作为版本号的实现；
+			* 循环时间长开销大：
+			* 只能保证一个共享变量的原子操作：解决办法是可以将多个变量组合成一个对象，使用`AtomicReference`来保证引用对象的原子性；
+	* 使用锁机制实现原子操作：
+		* 锁机制保证只有获得了锁的线程才能操作指定的内存区域。
+		* JVM中除了偏向锁，其他锁的实现方式都使用了循环CAS（循环CAS获取锁，循环CAS释放锁）
+```
+java
+`AtomicStampedReference类的CAS方法`
+/**
+Params:
+expectedReference – the expected value of the reference 
+newReference – the new value for the reference 
+expectedStamp – the expected value of the stamp 
+newStamp – the new value for the stamp
+*/
+public boolean compareAndSet(V   expectedReference,  
+                             V   newReference,  
+                             int expectedStamp,  
+                             int newStamp) {  
+    Pair<V> current = pair;  
+    return  
+        expectedReference == current.reference &&  
+        expectedStamp == current.stamp &&  
+        ((newReference == current.reference &&  
+          newStamp == current.stamp) ||  
+         casPair(current, Pair.of(newReference, newStamp)));  
+}
+```
+
