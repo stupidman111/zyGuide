@@ -5,8 +5,17 @@
 lottery-init-project
 lottery-build-rpc-framework
 lottery-design-tables
+lottery-coding-strategy
+lottery-config-activity
 ```
 
+## domain层各领域
+```text
+strategy---抽奖策略，根据具体抽奖请求进行抽奖，得到一个奖品信息
+award---奖品方法，根据奖品信息，执行奖品发放（包括落库等等）
+activity---活动配置，包括活动创建、活动领取、活动的状态变更
+
+```
 ## 库表设计
 - 活动配置，activity：提供活动的基本配置
 - 策略配置，strategy：用于配置抽奖策略，概率、玩法、库存、奖品
