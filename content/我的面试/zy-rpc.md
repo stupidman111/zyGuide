@@ -95,7 +95,8 @@ Map.Entry<Long, Invoker<T>> entry = virtualInvokers.ceilingEntry(hash);
 
 
 ## Spring自定义注解完成服务注册
-
+* 自定义扫描类继承`ClassPathBeanDefinitionScanner`，
+* 自定义类实现`ImportBeanDefinitionRegister`和`ResourceLoaderAware`接口，使用自定义的扫描类扫描`RpcService`注解，然后
 
 ## 获取结果是同步还是异步的
 >⽬前是异步的，我使⽤了CompletableFuture对象来包装RpcResponse,然后将他存⼊⼀个名为
