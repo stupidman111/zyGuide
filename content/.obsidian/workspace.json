@@ -23,11 +23,14 @@
             "id": "5342f3812a638109",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "八股文/Redis.md",
-                "mode": "preview",
-                "source": false
+                "file": "未命名.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               }
             }
           },
@@ -194,7 +197,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "八股文/Redis.md",
+                "file": "未命名.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,7 +214,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "八股文/Redis.md",
+                "file": "未命名.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -234,7 +237,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "八股文/Redis.md"
+                "file": "未命名.canvas"
               }
             }
           },
@@ -265,6 +268,9 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
+    "未命名.canvas",
+    "2024-05-05.md",
+    "八股文/Redis.md",
     "必会技术/Redis实战.md",
     "读书笔记/深入理解Java虚拟机.md",
     "我的面试/zy-rpc.md",
@@ -273,7 +279,6 @@
     "我的面试/Java API.md",
     "八股文/Java.md",
     "八股文/JUC.md",
-    "八股文/Redis.md",
     "必会技术/Kafka.md",
     "我的面试/算法.md",
     "我的面试/我的面筋.md",
@@ -296,8 +301,6 @@
     "读书笔记/未命名",
     "必会技术/线程池.md",
     "img/Linux网络协议栈.png",
-    "八股文/Spring.md",
-    "八股文/MySQL.md",
     "读书笔记",
     "其他语言",
     "八股文",
