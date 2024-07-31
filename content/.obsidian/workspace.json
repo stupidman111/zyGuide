@@ -25,8 +25,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "必会技术/Kafka.md",
-                "mode": "source",
+                "file": "notes/Java/ArrayList.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -194,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "必会技术/Kafka.md",
+                "file": "notes/Java/ArrayList.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "必会技术/Kafka.md",
+                "file": "notes/Java/ArrayList.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -234,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "必会技术/Kafka.md"
+                "file": "notes/Java/ArrayList.md"
               }
             }
           },
@@ -263,10 +263,18 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "5342f3812a638109",
+  "active": "f070666fbfadeb61",
   "lastOpenFiles": [
+    "notes/Java/assets",
+    "未命名",
+    "notes/Java/assets/1717481094793-b8ffe6ae-2ee6-4de5-b61b-8468e32bf269.webp",
+    "必会技术/Kafka.md",
+    "notes/Java/ArrayList.md",
     "未命名.canvas",
     "2024-05-05.md",
+    "notes",
+    "records",
+    "notes/Java",
     "八股文/Redis.md",
     "必会技术/Redis实战.md",
     "读书笔记/深入理解Java虚拟机.md",
@@ -276,7 +284,6 @@
     "我的面试/Java API.md",
     "八股文/Java.md",
     "八股文/JUC.md",
-    "必会技术/Kafka.md",
     "我的面试/算法.md",
     "我的面试/我的面筋.md",
     "必会技术/Netty与网络编程.md",
@@ -296,18 +303,14 @@
     "UDP头格式.md",
     "img/TCP报文格式.png",
     "读书笔记/未命名",
-    "必会技术/线程池.md",
     "img/Linux网络协议栈.png",
     "读书笔记",
     "其他语言",
     "八股文",
     "我的面试",
-    "必会技术",
     "img/Channel-Pipeline-Handler.png",
     "img/ChannelHandler.png",
     "img/Netty工作原理图.png",
-    "多线程",
-    "img/对象结构-对象头-Markword.png",
-    "img/SpringMVC工作原理.png"
+    "img/对象结构-对象头-Markword.png"
   ]
 }
