@@ -23,7 +23,7 @@ public class ArrayList<E> extends AbstractList<E>
 
 * ArrayList 实现了 List 接口、RandomAccess 接口、Cloneable接口、Serializable 接口：
 
-  * 实现 List 接口：表明 ArrayList是一个列表，支持 添加、删除、查找 等操作，并且支持下标访问；
+  * 实现 List 接口：表明 ArrayList是一个列表，支持 添加、删除、查找 等操作；
   * 实现 RandomAccess 接口：是一个标志接口，表明 ArrayList 支持快速随机访问；
   * 实现 Cloneable 接口：表明 ArrayList 具有拷贝能力，可以进行深拷贝、浅拷贝等动作；
   * 实现 Serializable 接口：表明 ArrayList 可以进行序列化操作；
