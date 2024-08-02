@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/Java/ArrayList.md",
+                "file": "刷题/动态规划.md",
                 "mode": "source",
                 "source": false
               }
@@ -194,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes/Java/ArrayList.md",
+                "file": "刷题/动态规划.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "notes/Java/ArrayList.md",
+                "file": "刷题/动态规划.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -234,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/Java/ArrayList.md"
+                "file": "刷题/动态规划.md"
               }
             }
           },
@@ -247,7 +247,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -263,12 +263,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f070666fbfadeb61",
+  "active": "5342f3812a638109",
   "lastOpenFiles": [
+    "notes/Java/ArrayList.md",
     "notes/Java/assets/继承关系.png",
     "notes/Java/assets/1717481094793-b8ffe6ae-2ee6-4de5-b61b-8468e32bf269.webp",
     "notes/Java/assets/1717481094793-b8ffe6ae-2ee6-4de5-b61b-8468e32bf269.jpeg",
-    "notes/Java/ArrayList.md",
     "八股文/计网.md",
     "我的面试/Lottery.md",
     "我的面试/Java API.md",
@@ -310,7 +310,6 @@
     "读书笔记/未命名",
     "img/Linux网络协议栈.png",
     "读书笔记",
-    "img/Channel-Pipeline-Handler.png",
-    "img/ChannelHandler.png"
+    "img/Channel-Pipeline-Handler.png"
   ]
 }
