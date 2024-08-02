@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/Java/HashMap 简介.md",
+                "file": "notes/Java/HashMap.md",
                 "mode": "source",
                 "source": false
               }
@@ -178,8 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 238.5,
-    "collapsed": true
+    "width": 238.5
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -195,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes/Java/HashMap 简介.md",
+                "file": "notes/Java/HashMap.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -212,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "notes/Java/HashMap 简介.md",
+                "file": "notes/Java/HashMap.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -235,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/Java/HashMap 简介.md"
+                "file": "notes/Java/HashMap.md"
               }
             }
           },
@@ -266,9 +265,9 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
-    "notes/Java/LinkedList.md",
-    "notes/Java/HashMap 简介.md",
     "notes/Java/ArrayList.md",
+    "notes/Java/HashMap.md",
+    "notes/Java/LinkedList.md",
     "notes/Java/assets/继承关系.png",
     "刷题/动态规划.md",
     "notes/Java/assets/1717481094793-b8ffe6ae-2ee6-4de5-b61b-8468e32bf269.webp",

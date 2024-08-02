@@ -1,3 +1,5 @@
+
+# HashMap 简介
 * HashMap 主要用来存放键值对，它基于哈希表的 Map 接口实现，是常用的 Java 集合之一，是非线程安全的；
 * 可以存储 null 的 key 和 value，但 null 作为键只能有一个，null 作为值可以有多个；
 * 底层数据结构：
@@ -98,9 +100,13 @@ final float loadFactor;
 ```
 
 * `loadFactor`：负载因子，控制数组存放数据的疏密程度；
-	* 越接近 1，数组中存放的数据就越多，也就越密；
-	* 越接近 0，数组中存放的数据越少，
+	* 越接近 1，数组中存放的数据就越多，也就越密，查找效率越低；
+	* 越接近 0，数组中存放的数据越少，越稀疏，数组利用率越低；
+	* 默认的 HashMap 容量为 16，默认的 loadFactor 为 0.75，也就是当HashMap 中键值对数量超过了 阈值=`16*0.75` = 12 时，就需要将数组进行扩容，并且需要复制数据； 
+
+* **hreshold = capacity * loadFactor**，**当 Size>threshold**的时候，那么就要考虑对数组的扩增了，也就是说，这个的意思就是 **衡量数组是否需要扩增的一个标准**。
 ## HashMap 构造函数
+> 需要注意，当我们指定初始容量构造 HashMap 时，实际上 HashMap 不一定使用该值进行数组的初始化，需要对该 值扩大到最接近 2 的幂次方的大小。
 ```java
 //传入初始容量、负载因子
 public HashMap(int initialCapacity, float loadFactor) {  
@@ -132,3 +138,85 @@ public HashMap(Map<? extends K, ? extends V> m) {
     putMapEntries(m, false);  
 }
 ```
+
+## Node节点--链表节点
+
+
+## TreeNode节点--红黑树节点
+
+
+## put方法
+> put 方法实际调用 putVal 方法。
+
+```java
+
+//调用 putVal 方法前，通过 扰动函数--hash() 计算 key 映射的位置；
+public V put(K key, V value) {  
+    return putVal(hash(key), key, value, false, true);  
+}
+
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,  
+               boolean evict) {  
+    Node<K,V>[] tab; Node<K,V> p; int n, i;  
+    if ((tab = table) == null || (n = tab.length) == 0)  
+        n = (tab = resize()).length;  
+    if ((p = tab[i = (n - 1) & hash]) == null)  
+        tab[i] = newNode(hash, key, value, null);  
+    else {  
+        Node<K,V> e; K k;  
+        if (p.hash == hash &&  
+            ((k = p.key) == key || (key != null && key.equals(k))))  
+            e = p;  
+        else if (p instanceof TreeNode)  
+            e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);  
+        else {  
+            for (int binCount = 0; ; ++binCount) {  
+                if ((e = p.next) == null) {  
+                    p.next = newNode(hash, key, value, null);  
+                    if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st  
+                        treeifyBin(tab, hash);  
+                    break;                }  
+                if (e.hash == hash &&  
+                    ((k = e.key) == key || (key != null && key.equals(k))))  
+                    break;  
+                p = e;  
+            }  
+        }  
+        if (e != null) { // existing mapping for key  
+            V oldValue = e.value;  
+            if (!onlyIfAbsent || oldValue == null)  
+                e.value = value;  
+            afterNodeAccess(e);  
+            return oldValue;  
+        }  
+    }  
+    ++modCount;  
+    if (++size > threshold)  
+        resize();  
+    afterNodeInsertion(evict);  
+    return null;}
+```
+
+* 调用 putVal 方法前，通过 扰动函数--hash() 计算 key 映射的位置；
+* 如果定位到的位置没有元素，就直接插入；
+* 如果定位到的数据位置有元素，将插入元素的 key 与该位置的 key 进行`.equals()`比较
+	* 如果为 true，则覆盖该元素；
+	* 如果为 false，则判断该位置是否为树节点(`instanceof TreeNode`)
+		* 如果是，直接调用方法将元素插入到树中；
+		* 如果不是，遍历链表，依次比较 key.equals()，如果不存在 true，则最终插入链表末尾；
+> 注意：在 JDK1.7 中，使用头插法插入到 链表头部；
+
+## get方法
+
+```java
+
+```
+
+## resize方法 和 重新哈希
+> 调用 resize 扩容时，需要复制元素，HashMap 对所有 key 进行一次重新 hash 分配；
+
+* resize：判断是否超过HashMap 容量最大值：是：不再扩容；否：2 倍扩容（在构造时保证了初始容量是 2 的幂次方）
+* 重新哈希：将每个 Key 进行重新哈希定位，具体操作：`key.hash & (newCap-1)`：
+	即：key 经过扰动函数得到的 hash 值，与上 新容量-1：
+	因为新容量是 2 的幂次方，-1，可以将低位全部置为1，高位全部置为 0，
+	这样新位置要么是原来的位置，要么是`原来的位置+原数组的长度`
