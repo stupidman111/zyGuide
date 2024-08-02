@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/Java/HashMap.md",
+                "file": "notes/技术栈/Dubbo.md",
                 "mode": "source",
                 "source": false
               }
@@ -194,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes/Java/HashMap.md",
+                "file": "notes/技术栈/Dubbo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "notes/Java/HashMap.md",
+                "file": "notes/技术栈/Dubbo.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -234,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/Java/HashMap.md"
+                "file": "notes/技术栈/Dubbo.md"
               }
             }
           },
@@ -263,10 +263,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "5342f3812a638109",
+  "active": "f070666fbfadeb61",
   "lastOpenFiles": [
-    "notes/Java/ArrayList.md",
+    "notes/技术栈/assets",
+    "notes/技术栈/assets/Dubbo背景.png",
     "notes/Java/HashMap.md",
+    "notes/技术栈/Dubbo.md",
+    "notes/技术栈",
+    "notes/Java/ArrayList.md",
     "notes/Java/LinkedList.md",
     "notes/Java/assets/继承关系.png",
     "刷题/动态规划.md",
@@ -301,16 +305,12 @@
     "八股文/JUC.md",
     "读书笔记/计算机网络-自顶向下方法.md",
     "读书笔记/Kafka权威指南.md",
-    "读书笔记/Java并发编程的艺术.md",
-    "读书笔记/数据密集型应用系统设计.md",
     "前端",
     "img/TCP四次挥手状态图.png",
     "img/TCP三次握手状态图.png",
     "img/UDP报文格式.png",
     "img/TCP报文格式.png",
     "读书笔记/未命名",
-    "img/Linux网络协议栈.png",
-    "读书笔记",
-    "img/Channel-Pipeline-Handler.png"
+    "img/Linux网络协议栈.png"
   ]
 }
