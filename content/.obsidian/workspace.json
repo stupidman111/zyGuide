@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "刷题/动态规划.md",
+                "file": "notes/Java/HashMap 简介.md",
                 "mode": "source",
                 "source": false
               }
@@ -178,7 +178,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 238.5,
+    "collapsed": true
   },
   "right": {
     "id": "3dcea17e259fe8f5",
@@ -194,7 +195,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "刷题/动态规划.md",
+                "file": "notes/Java/HashMap 简介.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,7 +212,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "刷题/动态规划.md",
+                "file": "notes/Java/HashMap 简介.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -234,7 +235,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "刷题/动态规划.md"
+                "file": "notes/Java/HashMap 简介.md"
               }
             }
           },
@@ -251,7 +252,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -265,14 +266,16 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
+    "notes/Java/LinkedList.md",
+    "notes/Java/HashMap 简介.md",
     "notes/Java/ArrayList.md",
     "notes/Java/assets/继承关系.png",
+    "刷题/动态规划.md",
     "notes/Java/assets/1717481094793-b8ffe6ae-2ee6-4de5-b61b-8468e32bf269.webp",
     "notes/Java/assets/1717481094793-b8ffe6ae-2ee6-4de5-b61b-8468e32bf269.jpeg",
     "八股文/计网.md",
     "我的面试/Lottery.md",
     "我的面试/Java API.md",
-    "刷题/动态规划.md",
     "必会技术/Spring实战.md",
     "必会技术/Redis实战.md",
     "必会技术/Netty与网络编程.md",
@@ -301,7 +304,6 @@
     "读书笔记/Kafka权威指南.md",
     "读书笔记/Java并发编程的艺术.md",
     "读书笔记/数据密集型应用系统设计.md",
-    "八股文/OS与Linux.md",
     "前端",
     "img/TCP四次挥手状态图.png",
     "img/TCP三次握手状态图.png",
