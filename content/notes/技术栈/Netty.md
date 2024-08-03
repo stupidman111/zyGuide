@@ -45,7 +45,9 @@
 * NIO-Non-Blocking I/O：同步非阻塞 I/O 模式
 * AIO-Asyn I/O：异步 I/O
 
+Netty首先是一个网络应用框架，server端和client端如何写数据给对方呢？ 这时就是NIO
 
+Netty又是一个异步时间驱动框架，server或者client在拿到数据之后需要处理吧，这时就用到这个框架了
 
 
 # Netty
