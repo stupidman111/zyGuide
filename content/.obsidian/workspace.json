@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "刷题/动态规划.md",
+                "file": "notes/技术栈/Dubbo.md",
                 "mode": "source",
                 "source": false
               }
@@ -194,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "刷题/动态规划.md",
+                "file": "notes/技术栈/Dubbo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "刷题/动态规划.md",
+                "file": "notes/技术栈/Dubbo.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -234,7 +234,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "刷题/动态规划.md"
+                "file": "notes/技术栈/Dubbo.md"
               }
             }
           },
@@ -265,6 +265,7 @@
   },
   "active": "5342f3812a638109",
   "lastOpenFiles": [
+    "刷题/动态规划.md",
     "notes/技术栈/Dubbo.md",
     "notes/技术栈/assets",
     "notes/技术栈/assets/Dubbo背景.png",
@@ -273,7 +274,6 @@
     "notes/Java/ArrayList.md",
     "notes/Java/LinkedList.md",
     "notes/Java/assets/继承关系.png",
-    "刷题/动态规划.md",
     "notes/Java/assets/1717481094793-b8ffe6ae-2ee6-4de5-b61b-8468e32bf269.webp",
     "notes/Java/assets/1717481094793-b8ffe6ae-2ee6-4de5-b61b-8468e32bf269.jpeg",
     "八股文/计网.md",
