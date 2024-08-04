@@ -233,6 +233,7 @@ NioSctpSedrverChannel//异步的服务器端Sctp连接
 #### 心跳机制的实现
 > 心跳机制可以往pipeline中添加一个`IdleStateHandler`来实现。
 
+
 ### Pipeline和ChannelPipeline
 ![](Channel-Pipeline-Handler.png)
 ### ChannelHandlerContext
