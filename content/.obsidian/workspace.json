@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "我的面试/zy-rpc.md",
+                "file": "notes/技术栈/Netty与网络编程.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/技术栈/Netty.md",
+                "file": "notes/技术栈/Netty与网络编程.md",
                 "mode": "source",
                 "source": false
               }
@@ -49,7 +49,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "必会技术/Netty与网络编程.md",
+                "file": "notes/技术栈/Netty与网络编程.md",
                 "mode": "source",
                 "source": false
               }
@@ -127,8 +127,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -194,7 +193,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes/技术栈/Netty.md",
+                "file": "notes/技术栈/Netty与网络编程.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,7 +210,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "notes/技术栈/Netty.md",
+                "file": "notes/技术栈/Netty与网络编程.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -234,7 +233,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/技术栈/Netty.md"
+                "file": "notes/技术栈/Netty与网络编程.md"
               }
             }
           },
@@ -247,7 +246,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -263,10 +262,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "5342f3812a638109",
+  "active": "65ff0c766fa34cf0",
   "lastOpenFiles": [
-    "notes/技术栈/Dubbo.md",
+    "我的面试/zy-rpc.md",
     "notes/技术栈/Netty.md",
+    "八股文/Spring.md",
+    "notes/技术栈/Netty与网络编程.md",
+    "notes/技术栈/Dubbo.md",
     "刷题/动态规划.md",
     "notes/技术栈/assets",
     "notes/技术栈/assets/Dubbo背景.png",
@@ -282,12 +284,10 @@
     "我的面试/Java API.md",
     "必会技术/Spring实战.md",
     "必会技术/Redis实战.md",
-    "必会技术/Netty与网络编程.md",
     "必会技术/Kafka.md",
     "必会技术/dubbo.md",
     "必会技术/线程池.md",
     "img/对象结构-对象头-Markword.png",
-    "我的面试/zy-rpc.md",
     "刷题/动态规划/未命名.md",
     "刷题/动态规划",
     "刷题",
@@ -305,7 +305,6 @@
     "八股文/Java.md",
     "八股文/JUC.md",
     "读书笔记/计算机网络-自顶向下方法.md",
-    "读书笔记/Kafka权威指南.md",
     "前端",
     "img/TCP四次挥手状态图.png",
     "img/TCP三次握手状态图.png",
