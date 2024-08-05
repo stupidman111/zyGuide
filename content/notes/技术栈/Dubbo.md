@@ -95,8 +95,10 @@ public class Application {
 ## 常用类
 * `ApplicationConfig`：用于配置当前应用的信息。它包含应用程序的名称和其他一些应用级别的配置。
 * `RegistryConfig`：用于配置注册中心的信息。注册中心用于服务的注册和发现。
-* `ServiceConfig`：用于配置具体的服务。它包含服务的接口、实现类和其他一些服务级别的配置。
-* `ReferenceConfig`：用于配置服务引用的配置类。它主要用于消费者端，用来配置和引用远程的服务接口，从而在本地调用远程服务。
+* `ServiceConfig`：用于配置具体的服务。它包含服务的接口、实现类和其他一些服务级别的配置。（服务提供者 通过 ServiceConfig 暴露服务接口，发布服务接口到注册中心。）
+* `ReferenceConfig`：用于配置服务引用的配置类。它主要用于消费者端，用来配置和引用远程的服务接口，从而在本地调用远程服务。（服务消费者 通过 ReferenceConfig 引用远程服务，从注册中心订阅服务接口。）
+* `DubboBootstrap`：通过 DubboBootstrap API 可以减少重复配置，更好控制启动过程，支持批量发布/订阅服务接口，还可以更好支持 Dubbo3 的应用级服务发现。
+* 
 
 # XML 配置方式使用 Dubbo
 
